@@ -1,5 +1,74 @@
 <!DOCTYPE html>
 <html>
+<head>
+ <meta charset="utf-8">
+ <title>Feedback</title>
+ <!--Import Google Icon Font-->
+ <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+ <!--Import materialize.css-->
+ <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-alpha.3/css/materialize.min.css"  media="screen,projection"/>
+ <link rel="stylesheet" href="../public/stylesheets/feedback.css">
+ <style>
+   form{
+    bottom: 0px;
+   }
+
+ </style>
+ <!--Let browser know website is optimized for mobile-->
+ <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+</head>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.4/socket.io.js"></script>
+<script>
+    var socket = io();
+
+    function sendMessage() {
+        const user = document.getElementById('message-container').getAttribute("name");
+        var msg = document.getElementById('chat').value;
+        if (msg) {
+            socket.emit('msg', { message: msg, username: user });
+        }
+    }
+    socket.on('newmsg', function (data) {
+        document.getElementById('message-container').innerHTML += '<div>' + data.username + ": " + data.message + '</div>';
+    });
+</script>
+
+<body>
+ 
+
+ <div name=<%=username %> id="message-container"></div>
+    <form>
+        Chat
+        <br>
+        <input type="text" name="chat" id="chat">
+        <br>
+        <button class="btn waves-effect waves-light" type="button" name="button" id="message" onclick="sendMessage()">
+            chat
+            <i class="material-icons right">send</i>
+        </button>
+    </form>
+
+ 
+<!--Import jQuery before materialize.js-->
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-alpha.3/js/materialize.min.js"></script>
+<script>
+  $(document).ready(function(){
+    $('.sidenav').sidenav();
+    $('.scrollspy').scrollSpy();
+  });
+</script>
+</body>
+</html>
+
+
+
+
+____________________________________________________
+
+<!-- <!DOCTYPE html>
+<html>
 
 <head>
     <title>CureChat</title>
@@ -49,4 +118,4 @@
             <div id="timer">10</div>
 </body>
 
-</html>
+</html> -->
