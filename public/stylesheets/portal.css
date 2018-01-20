@@ -1,7 +1,8 @@
-h1,h2 {
-	text-align: center;
+.fixed {
+	position: fixed !important;
+	border-left-style: solid;
+	height: 100%;
 }
-
-#control-buttons {
-	text-align: center;
+.no-margin {
+	margin: 0;
 }
