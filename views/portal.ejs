@@ -83,16 +83,16 @@
         <div class="section">
           <h5>Journal Entry</h5>
           <div class="row">
-            <form class="col s12">
+            <form class="col s12" method="post" action "/portal">
               <div class="row">
                 <div class="input-field col s6">
-                  <input id="input_text" type="text" data-length="10">
+                  <input id="input_text" type="text" data-length="10" name="title">
                   <label for="input_text">Entry Title</label>
                 </div>
               </div>
               <div class="row">
                 <div class="input-field col s12">
-                  <textarea id="textarea1" class="materialize-textarea" data-length="120"></textarea>
+                  <textarea id="textarea1" class="materialize-textarea" data-length="120" name="entry"></textarea>
                   <label for="textarea1">Entry</label>
                 </div>
               </div>
@@ -127,7 +127,7 @@
                   </ul>
                 </div>
                 <div class="col s7">
-                  <input class="btn btn-large" type="submit" name="submit" value="Submit">
+                  <input class="btn btn-large" type="submit" name="submit" value="Submit" onclick="submitEntry()">
                 </div>
               </div>
             </form>
@@ -136,34 +136,18 @@
 
         <div class="section">
           <h5>Journal History</h5>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-          Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis
-          aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
-          occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor
-          sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-          ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
-          dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-          cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet,
-          consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-          veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
-          in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat
-          non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur
-          adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
-          nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit
-          in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-          sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipisicing
-          elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-          exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
-          voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt
-          in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-          sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-          ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit
-          esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui
-          officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-          tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-          laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-          cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
-          deserunt mollit anim id est laborum.
+          <table>
+            <% for(let i=0; i < journals.length; i++) { %>
+              <tr>
+                <td>
+                  <%= journals[i].title %>
+                </td>
+                <td>
+                  <%= journals[i].entry %>
+                </td>
+              </tr>
+              <% } %>
+          </table>
         </div>
 
         <!-- FLOATING BUTTON IN BOT-LEFT-->
@@ -179,264 +163,66 @@
 
     <!-- SIDEBARD -->
     <div class="col s3">
-      <div class="fixed z-depth-2 light-blue lighten-4">
+      <div class="fixed z-depth-2 light-blue lighten-3">
         <div class="section light-blue lighten-4">
           <div class="container">
             <p>Welcome Back,
               <%= user.username %>!</p>
           </div>
         </div>
-        <<<<<<< HEAD </nav>
-          </header>
-
-          <ul class="sidenav" id="mobile">
-            <% if (user) { %>
-              <li>
-                <a href="#">Home</a>
-              </li>
-              <li>
-                <a href="/dashboard">Dashboard</a>
-              </li>
-              <li>
-                <a href="/auth/logout">Logout</a>
-              </li>
-              <% } else { %>
-                <li>
-                  <a href="/auth/login">Login</a>
-                </li>
-                <li>
-                  <a href="/auth/login">Sign Up</a>
-                </li>
-                <% } %>
-          </ul>
-
-
-          <div class="row">
-            <div class="col s9">
-              <div class="container">
-                <h4>Dashboard</h4>
-                <div class="divider"></div>
-
-                <div class="section">
-                  <h5>Journal Entry</h5>
-                  <div class="row">
-                    <form class="col s12">
-                      <div class="row">
-                        <div class="input-field col s6">
-                          <input id="input_text" type="text" data-length="10">
-                          <label for="input_text">Entry Title</label>
-                        </div>
-                      </div>
-                      <div class="row">
-                        <div class="input-field col s12">
-                          <textarea id="textarea1" class="materialize-textarea" data-length="120"></textarea>
-                          <label for="textarea1">Entry</label>
-                        </div>
-                      </div>
-                      <div class="row">
-                        <div class="col s3">
-                          <input class="btn btn-large" type="submit" name="submit" value="Submit">
-                        </div>
-                        <div class="col s9">
-                          <ul class="pagination">
-                            <li class="waves-effect">
-                              <a href="#!">
-                                <i class="material-icons">mood</i>
-                              </a>
-                            </li>
-                            <li class="waves-effect">
-                              <a href="#!">
-                                <i class="material-icons">mood</i>
-                              </a>
-                            </li>
-                            <li class="waves-effect">
-                              <a href="#!">
-                                <i class="material-icons">mood</i>
-                              </a>
-                            </li>
-                            <li class="waves-effect">
-                              <a href="#!">
-                                <i class="material-icons">mood</i>
-                              </a>
-                            </li>
-                            <li class="waves-effect">
-                              <a href="#!">
-                                <i class="material-icons">mood</i>
-                              </a>
-                            </li>
-                          </ul>
-                        </div>
-                      </div>
-                    </form>
-                  </div>
-                </div>
-
-                <div class="section">
-                  <h5>Journal History</h5>
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                  Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                  Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-                  Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                  dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                  ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                  fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
-                  mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
-                  incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                  laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit
-                  esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa
-                  qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-                  sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-                  exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit
-                  in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-                  sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur
-                  adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                  quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
-                  in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-                  cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor
-                  sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                  Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                  Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-                  Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                  dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                  ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                  fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
-                  mollit anim id est laborum.
-                </div>
-
-                <div class="fixed-action-btn">
-                  <a href="#top" class="btn-floating btn-large blue">
-                    <i class="large material-icons">arrow_upward</i>
-                  </a>
-                </div>
-
-
-              </div>
+        <hr>
+        <div class="section light-blue lighten-5">
+          <div class="container">
+            <p>Time Bar</p>
+            <div class="progress">
+              <div class="determinate" style="width: 70%"></div>
             </div>
-            <div class="col s3 ">
-              <div class="fixed">
-                <div class="section light-blue lighten-4">
-                  <div class="container">
-                    <p>Welcome Back,
-                      <%= user.username %>!</p>
-                  </div>
-                </div>
-                <div class="section light-blue lighten-5">
-                  <div class="container">
-                    <p>Time Bar</p>
-                    <div class="progress">
-                      <div class="determinate" style="width: 70%"></div>
-                    </div>
-                    =======
-                    <div class="section light-blue lighten-5">
-                      <div class="container">
-                        <p>Time Bar</p>
-                        <div class="progress">
-                          <div class="determinate" style="width: 70%"></div>
-                          >>>>>>> 77ce6cb34753c919aac1acf9fa4cf3477246e882
-                        </div>
-                      </div>
-                    </div>
-                    <div class="section light-blue lighten-4">
-                      <div class="container">
-                        <p>Commends</p>
-                      </div>
-                    </div>
-                    <div class="section light-blue lighten-5">
-                      <div class="container">
-                        <p>Streaks</p>
-                      </div>
-                    </div>
-                    <div class="section light-blue lighten-4">
-                      <div class="container">
-                        <p>&nbsp;</p>
-                      </div>
-                    </div>
-                    <div class="section light-blue lighten-5">
-                      <div class="container">
-                        <a class="waves-effect waves-teal btn-flat" href="portal/chat">Chat</a>
-                      </div>
-                    </div>
-                    <div class="section light-blue lighten-4">
-                      <div class="container">
-                        <a class="waves-effect waves-teal btn-flat">Spectate</a>
-                      </div>
-                    </div>
-                  </div>
-                  <<<<<<< HEAD <<<<<<< HEAD </div>
-                </div>
-
-
-                <!--Import jQuery before materialize.js-->
-                <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-                <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-alpha.3/js/materialize.min.js"></script>
-                <script>
-                  $(document).ready(function () {
-                    $('.sidenav').sidenav();
-                    $('.scrollspy').scrollSpy();
-                  });
-                </script> =======
-              </div>
-
-
-              <!-- Horizonal FAB for creating new diary entry -->
-              <!-- TODO: do something with the horizontal buttons or delete them and replace with normal FAB -->
-              <!-- TODO: why does hovering not work -->
-              <div class="fixed-action-btn horizontal">
-                <a class="btn-floating btn-large red">
-                  <i class="large material-icons">mode_edit</i>
-                </a>
-                <ul>
-                  <li>
-                    <a class="btn-floating red">
-                      <i class="material-icons">insert_chart</i>
-                    </a>
-                  </li>
-                  <li>
-                    <a class="btn-floating yellow darken-1">
-                      <i class="material-icons">format_quote</i>
-                    </a>
-                  </li>
-                  <li>
-                    <a class="btn-floating green">
-                      <i class="material-icons">publish</i>
-                    </a>
-                  </li>
-                  <li>
-                    <a class="btn-floating blue">
-                      <i class="material-icons">attach_file</i>
-                    </a>
-                  </li>
-                </ul>
-              </div>
-
-
-
-
-              <!--Import jQuery before materialize.js-->
-              <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-              <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-alpha.3/js/materialize.min.js"></script>
-              <script>
-                $(document).ready(function () {
-                  $('.sidenav').sidenav();
-                  $('.scrollspy').scrollSpy();
-                });
-              </script> >>>>>>> c9a058c73e623dcbe14bf316f9e67201a81b0886 =======
-            </div>
-            <!-- END OF SIDEBAR -->
           </div>
+        </div>
+        <div class="section light-blue lighten-4">
+          <div class="container">
+            <p>Commends</p>
+          </div>
+        </div>
+        <div class="section light-blue lighten-5">
+          <div class="container">
+            <p>Streaks</p>
+          </div>
+        </div>
+        <hr>
+        <div class="section light-blue lighten-5">
+          <div class="container">
+            <a class="waves-effect waves-teal btn-flat" href="portal/chat">Chat</a>
+          </div>
+        </div>
+        <div class="section light-blue lighten-4">
+          <div class="container">
+            <a class="waves-effect waves-teal btn-flat">Spectate</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- END OF SIDEBAR -->
+  </div>
 
+  <script>
+    const submitEntry = () => {
+      // const title = document.getElementById("input_text").value;
+      // const entry = document.getElementById("textarea1").value;
+      // console.log(title);
+      // console.log(entry);
+    }
+  </script>
 
-          <!--Import jQuery before materialize.js-->
-          <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-          <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-alpha.3/js/materialize.min.js"></script>
-          <script>
-            $(document).ready(function () {
-              $('.sidenav').sidenav();
-              $('.scrollspy').scrollSpy();
-            });
-          </script> >>>>>>> 77ce6cb34753c919aac1acf9fa4cf3477246e882
+  <!--Import jQuery before materialize.js-->
+  <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-alpha.3/js/materialize.min.js"></script>
+  <script>
+    $(document).ready(function () {
+      $('.sidenav').sidenav();
+      $('.scrollspy').scrollSpy();
+    });
+  </script>
 </body>
 
 </html>
