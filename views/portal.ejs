@@ -112,45 +112,52 @@
 
   <!-- SIDEBARD -->
   <div class="col s3">
-    <div class="fixed z-depth-2 light-blue lighten-4">
-      <div class="section light-blue lighten-4">
+    <div class="fixed z-depth-2 light-blue lighten-3">
+      <div class="section text-siderbar" id="dash_sidebar">
         <div class="container">
-          <p>Welcome Back, <%= user.username %>!</p>
+          Welcome Back,
+          <p><strong><% user.username %>!</strong></p>
         </div>
       </div>
-      <hr>
-      <div class="section light-blue lighten-5">
+      <hr class="no-pad-or-marg">
+      <div class="section text-siderbar light-blue lighten-5">
         <div class="container">
-          <p>Time Bar</p>
+
+          Time Bar<abbr title="Info">(?)</abbr>
           <div class="progress">
             <div class="determinate" style="width: 70%"></div>
           </div>
+          <span>63</span> Minutes Remaining
+
         </div>
       </div>
-      <div class="section light-blue lighten-4">
+      <div class="section text-siderbar light-blue lighten-4">
         <div class="container">
-          <p>Commends</p>
+
+          Commends<abbr title="Info">(?)</abbr>
+          <p class="p-sidebar">
+            <i class="material-icons">mood</i> #&nbsp;&nbsp;&nbsp;&nbsp;
+            <i class="material-icons">lightbulb_outline</i> #
+          </p>
+
         </div>
       </div>
-      <div class="section light-blue lighten-5">
+      <div class="section text-siderbar light-blue lighten-5">
         <div class="container">
-          <p>Streaks</p>
+
+          Streaks<abbr title="Info">(?)</abbr>
+          <p class="p-sidebar">
+            # Days
+          </p>
+
         </div>
       </div>
-      <div class="section light-blue lighten-4">
-        <div class="container">
-          <p>&nbsp;</p>
-        </div>
+      <hr class="no-pad-or-marg">
+      <div class="section light-blue lighten-4 no-pad-or-marg">
+        <a class="waves-effect waves-teal btn-flat btn-sidebar center-align" href="#">Chat&nbsp;&nbsp;<i class="material-icons">question_answer</i></a><!--href="portal/chat"-->
       </div>
-      <div class="section light-blue lighten-5">
-        <div class="container">
-          <a class="waves-effect waves-teal btn-flat" href="portal/chat">Chat</a>
-        </div>
-      </div>
-      <div class="section light-blue lighten-4">
-        <div class="container">
-          <a class="waves-effect waves-teal btn-flat">Spectate</a>
-        </div>
+      <div class="section light-blue lighten-5 no-pad-or-marg">
+        <a class="waves-effect waves-teal btn-flat btn-sidebar center-align">Spectate&nbsp;&nbsp;<i class="material-icons">remove_red_eye</i></a>
       </div>
     </div>
   </div>
