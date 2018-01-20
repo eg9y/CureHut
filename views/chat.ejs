@@ -3,18 +3,17 @@
 
 <head>
 	
-   <meta charset="utf-8">
-   <title>Feedback</title>
-   <!--Import Google Icon Font-->
-   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-   <!--Import materialize.css-->
-   <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-alpha.3/css/materialize.min.css"  media="screen,projection"/>
-   <link rel="stylesheet" href="../public/stylesheets/feedback.css">
-   <style>
-   html{
+ <meta charset="utf-8">
+ <title>Feedback</title>
+ <!--Import Google Icon Font-->
+ <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+ <!--Import materialize.css-->
+ <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-alpha.3/css/materialize.min.css"  media="screen,projection"/>
+ <link rel="stylesheet" href="../public/stylesheets/feedback.css">
+ <style>
+ html{
     padding: 50px;
     border: 10px solid purple;
-    /*height: 100%*/
 }
 form {
     position: fixed;
@@ -25,17 +24,13 @@ form {
     height: 150px;
     z-index: 99;
     background: #lightblue;
-/*    border: none;
-*/    outline: none;
-    /*padding-left: 55px;
-    padding-right: 55px;*/
+    outline: none;
     border-top: 10px solid blue;
 }
 
 #chat{
- /* width: 80%;*/
- resize: none;
- height: 100px;
+   resize: none;
+   height: 100px;
 }
 
 #message, #leave{
@@ -47,25 +42,46 @@ form {
 }
 
 /*speech bubble template from https://leaverou.github.io/bubbly/*/
-.speech-bubble {
+.speech-bubble-left {
     position: relative;
     background: #00aabb;
     border-radius: .4em;
 }
 
-.speech-bubble:after {
+.speech-bubble-left:after {
     content: '';
     position: absolute;
     left: 0;
     top: 50%;
     width: 0;
     height: 0;
-    border: 16px solid transparent;
+    border: 20px solid transparent;
     border-right-color: #00aabb;
     border-left: 0;
-    border-top: 0;
-    margin-top: -8px;
-    margin-left: -16px;
+    border-bottom: 0;
+    margin-top: -10px;
+    margin-left: -20px;
+}
+
+.speech-bubble-right {
+    position: relative;
+    background: #00aabb;
+    border-radius: .4em;
+}
+
+.speech-bubble-right:after {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 50%;
+    width: 0;
+    height: 0;
+    border: 20px solid transparent;
+    border-left-color: #00aabb;
+    border-right: 0;
+    border-bottom: 0;
+    margin-top: -10px;
+    margin-right: -20px;
 }
 #message-container div{
 
@@ -88,7 +104,7 @@ form {
         }
     }
     socket.on('newmsg', function (data) {
-        document.getElementById('message-container').innerHTML += '<div class="card-panel white"> <span class="username">' + data.username + "</span><p>" + data.message + '</p></div>';
+        document.getElementById('message-container').innerHTML += '<div class="speech-bubble-right"> <span class="username">' + data.username + "</span><p>" + data.message + '</p></div>';
     });
 </script>
 
@@ -127,8 +143,8 @@ form {
                     </div>
                 </div>
             </form>
-            
-            
+
+
             <!--Import jQuery before materialize.js-->
             <script type="text/javascript " src="https://code.jquery.com/jquery-3.2.1.min.js "></script>
             <script type="text/javascript " src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-alpha.3/js/materialize.min.js "></script>
