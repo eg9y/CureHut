@@ -23,15 +23,17 @@
 
 <body>
     <div name=<%=username %> id="message-container"></div>
-    <form>
-        Chat
-        <br>
-        <input type="text" name="chat" id="chat">
-        <br>
-        <button type="button" name="button" id="message" onclick="sendMessage()">
-            chat
-        </button>
-    </form>
+    <% if (!spectate) { %>
+        <form>
+            Chat
+            <br>
+            <input type="text" name="chat" id="chat">
+            <br>
+            <button type="button" name="button" id="message" onclick="sendMessage()">
+                chat
+            </button>
+        </form>
+        <% } %>
 </body>
 
 </html>
