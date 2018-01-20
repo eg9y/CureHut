@@ -1,93 +1,136 @@
 <!DOCTYPE html>
 <html>
+
 <head>
- <meta charset="utf-8">
- <title>Dashboard</title>
- <!--Import Google Icon Font-->
- <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
- <!--Import materialize.css-->
- <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-alpha.3/css/materialize.min.css"  media="screen,projection"/>
- 
- <!-- TODO: Better way to link stylesheet -->
- <link rel="stylesheet" href="../public/stylesheets/portal.css">
- <!--Let browser know website is optimized for mobile-->
- <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="utf-8">
+  <title>Dashboard</title>
+  <!--Import Google Icon Font-->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <!--Import materialize.css-->
+  <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-alpha.3/css/materialize.min.css"
+    media="screen,projection" />
+
+  <!-- TODO: Better way to link stylesheet -->
+  <link rel="stylesheet" href="../public/stylesheets/portal.css">
+  <!--Let browser know website is optimized for mobile-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 </head>
+
 <body>
- <header class="navbar-fixed">
-   <nav>
-     <div class="nav-wrapper">
-       <div class="container">
-         <a href="/" class="brand-logo">Logo</a>
-         <a href="#" data-target="mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
-         <ul class="right hide-on-med-and-down">
-           <% if (user) { %>
-           <li><a href="#">Home</a></li>
-           <li><a href="/dashboard">Dashboard</a></li>
-           <li><a href="/auth/logout">Logout</a></li>
-           <% } else { %>
-           <li><a href="/auth/login">Login</a></li>
-           <li><a href="/auth/login">Sign Up</a></li>
-           <% } %>
-         </ul>
-       </div>
-     </div>
-   </nav>
- </header>
+  <header class="navbar-fixed">
+    <nav>
+      <div class="nav-wrapper">
+        <div class="container">
+          <a href="/" class="brand-logo">Logo</a>
+          <a href="#" data-target="mobile" class="sidenav-trigger">
+            <i class="material-icons">menu</i>
+          </a>
+          <ul class="right hide-on-med-and-down">
+            <% if (user) { %>
+              <li>
+                <a href="#">Home</a>
+              </li>
+              <li>
+                <a href="/dashboard">Dashboard</a>
+              </li>
+              <li>
+                <a href="/auth/logout">Logout</a>
+              </li>
+              <% } else { %>
+                <li>
+                  <a href="/auth/login">Login</a>
+                </li>
+                <li>
+                  <a href="/auth/login">Sign Up</a>
+                </li>
+                <% } %>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
 
- <ul class="sidenav" id="mobile">
-   <% if (user) { %>
-   <li><a href="#">Home</a></li>
-   <li><a href="/dashboard">Dashboard</a></li>
-   <li><a href="/auth/logout">Logout</a></li>
-   <% } else { %>
-   <li><a href="/auth/login">Login</a></li>
-   <li><a href="/auth/login">Sign Up</a></li>
-   <% } %>
- </ul>
-
- <!-- dashboard header -->
- <h1> Welcome Back, <%= user.username %> ! </h1>
- <h2> How are you feeling today? </h2>
-
- <!-- time slider -->
- <!-- TODO: add dynamic percentage -->
- <p> Time until chatting reenables: </p>
- <div class="container">
-  <div class="progress">
-    <div class="determinate" style="width: 70%"></div>
-  </div>
-</div>
-
-<div id="control-buttons">
-  <a class="waves-effect waves-light btn" href="#"> Talk </a>
-  <a class="waves-effect waves-light btn" href="#"> Spectate </a>
-  <a class="waves-effect waves-light btn" href="#"> Write </a>
-</div>
-<!-- Horizonal FAB for creating new diary entry -->
-<!-- TODO: do something with the horizontal buttons or delete them and replace with normal FAB -->
-<!-- TODO: why does hovering not work -->
-<div class="fixed-action-btn horizontal">
-  <a class="btn-floating btn-large red">
-    <i class="large material-icons">mode_edit</i>
-  </a>
-  <ul>
-    <li><a class="btn-floating red"><i class="material-icons">insert_chart</i></a></li>
-    <li><a class="btn-floating yellow darken-1"><i class="material-icons">format_quote</i></a></li>
-    <li><a class="btn-floating green"><i class="material-icons">publish</i></a></li>
-    <li><a class="btn-floating blue"><i class="material-icons">attach_file</i></a></li>
+  <ul class="sidenav" id="mobile">
+    <% if (user) { %>
+      <li>
+        <a href="#">Home</a>
+      </li>
+      <li>
+        <a href="/dashboard">Dashboard</a>
+      </li>
+      <li>
+        <a href="/auth/logout">Logout</a>
+      </li>
+      <% } else { %>
+        <li>
+          <a href="/auth/login">Login</a>
+        </li>
+        <li>
+          <a href="/auth/login">Sign Up</a>
+        </li>
+        <% } %>
   </ul>
-</div>
+
+  <!-- dashboard header -->
+  <h1> Welcome Back,
+    <%= user.username %> ! </h1>
+  <h2> How are you feeling today? </h2>
+
+  <!-- time slider -->
+  <!-- TODO: add dynamic percentage -->
+  <p> Time until chatting reenables: </p>
+  <div class="container">
+    <div class="progress">
+      <div class="determinate" style="width: 70%"></div>
+    </div>
+  </div>
+
+  <div id="control-buttons">
+    <a class="waves-effect waves-light btn" href="/portal/chat"> Talk </a>
+    <a class="waves-effect waves-light btn" href="#"> Spectate </a>
+    <a class="waves-effect waves-light btn" href="#"> Write </a>
+  </div>
+  <!-- Horizonal FAB for creating new diary entry -->
+  <!-- TODO: do something with the horizontal buttons or delete them and replace with normal FAB -->
+  <!-- TODO: why does hovering not work -->
+  <div class="fixed-action-btn horizontal">
+    <a class="btn-floating btn-large red">
+      <i class="large material-icons">mode_edit</i>
+    </a>
+    <ul>
+      <li>
+        <a class="btn-floating red">
+          <i class="material-icons">insert_chart</i>
+        </a>
+      </li>
+      <li>
+        <a class="btn-floating yellow darken-1">
+          <i class="material-icons">format_quote</i>
+        </a>
+      </li>
+      <li>
+        <a class="btn-floating green">
+          <i class="material-icons">publish</i>
+        </a>
+      </li>
+      <li>
+        <a class="btn-floating blue">
+          <i class="material-icons">attach_file</i>
+        </a>
+      </li>
+    </ul>
+  </div>
 
 
-<!--Import jQuery before materialize.js-->
-<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-alpha.3/js/materialize.min.js"></script>
-<script>
-  $(document).ready(function(){
-    $('.sidenav').sidenav();
-    $('.scrollspy').scrollSpy();
-  });
-</script>
+  <!--Import jQuery before materialize.js-->
+  <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-alpha.3/js/materialize.min.js"></script>
+  <script>
+    $(document).ready(function () {
+      $('.sidenav').sidenav();
+      $('.scrollspy').scrollSpy();
+    });
+  </script>
 </body>
+
 </html>

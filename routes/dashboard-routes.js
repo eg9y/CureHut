@@ -14,7 +14,9 @@ router.get("/", authCheck, (req, res) => {
 });
 
 router.get("/chat", authCheck, (req, res) => {
-  res.render("chat");
+  res.render("chat", {
+    username: req.user.username
+  });
 });
 
 router.get("/journal", authCheck, (req, res) => {
