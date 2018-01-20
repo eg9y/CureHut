@@ -13,4 +13,10 @@ router.get("/", authCheck, (req, res) => {
   });
 });
 
+router.get("/journal", authCheck, (req, res) => {
+  res.send("Add journal");
+});
+
+router.post("/journal", (req, res) => {});
+
 module.exports = router;
