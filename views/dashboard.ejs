@@ -2,14 +2,14 @@
 <html>
 <head>
  <meta charset="utf-8">
- <title>Homepage</title>
+ <title>Dashboard</title>
  <!--Import Google Icon Font-->
  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
  <!--Import materialize.css-->
  <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-alpha.3/css/materialize.min.css"  media="screen,projection"/>
  
- <!-- TODO: Update stylesheet -->
- <link rel="stylesheet" href="/stylesheets/dashboard.css">
+ <!-- TODO: Better way to link stylesheet -->
+ <link rel="stylesheet" href="../public/stylesheets/dashboard.css">
  <!--Let browser know website is optimized for mobile-->
  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 </head>
@@ -59,11 +59,11 @@
   </div>
 </div>
 
-<a class="waves-effect waves-light btn" href="#"> Talk </a>
-<a class="waves-effect waves-light btn" href="#"> Spectate </a>
-<a class="waves-effect waves-light btn" href="#"> Write </a>
-
-
+<div id="control-buttons">
+  <a class="waves-effect waves-light btn" href="#"> Talk </a>
+  <a class="waves-effect waves-light btn" href="#"> Spectate </a>
+  <a class="waves-effect waves-light btn" href="#"> Write </a>
+</div>
 <!-- Horizonal FAB for creating new diary entry -->
 <!-- TODO: do something with the horizontal buttons or delete them and replace with normal FAB -->
 <!-- TODO: why does hovering not work -->
