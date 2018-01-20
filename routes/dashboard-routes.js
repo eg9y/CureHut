@@ -1,4 +1,6 @@
 const router = require("express").Router();
+const onlineUsers = [];
+const chattingUsers = [];
 
 const authCheck = (req, res, next) => {
   if (!req.user) {
@@ -14,6 +16,7 @@ router.get("/", authCheck, (req, res) => {
 });
 
 router.get("/chat", authCheck, (req, res) => {
+  onlineUsers.push(req.user);
   res.render("chat", {
     username: req.user.username
   });
