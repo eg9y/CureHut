@@ -1,6 +1,6 @@
 .fixed {
-	position: fixed !important;
-	border-left-style: solid;
+	position: fixed;
+	/*border-left-style: solid;*/
 	height: 100%;
 }
 .no-margin {
