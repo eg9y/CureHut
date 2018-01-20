@@ -1,1 +1,2 @@
 "# CureHut" 
+Welcome to CureHut.
