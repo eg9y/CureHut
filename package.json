@@ -2,7 +2,7 @@
   "name": "curehut",
   "version": "1.0.0",
   "description": "\"# CureHut\"",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/VVNoodle/CureHut#readme",
   "dependencies": {
+    "cookie-session": "^2.0.0-beta.3",
     "ejs": "^2.5.7",
     "express": "^4.16.2",
     "mongoose": "^5.0.1",
