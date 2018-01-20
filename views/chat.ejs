@@ -2,12 +2,24 @@
 <html>
 
 <head>
-    <title>Hello world</title>
+    <title>CureChat</title>
 </head>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.4/socket.io.js"></script>
 <script>
     var socket = io();
+
+    setInterval(() => {
+        const num = document.getElementById("timer").innerHTML;
+        const number = parseInt(num);
+        console.log(number);
+        const change = number - 1;
+        document.getElementById("timer").innerHTML = change;
+    }, 60000);
+    setTimeout(() => {
+        console.log("we finish bois");
+        window.location = "localhost:3000";
+    }, 3000);
 
     function sendMessage() {
         const user = document.getElementById('message-container').getAttribute("name");
@@ -34,6 +46,7 @@
             </button>
         </form>
         <% } %>
+            <div id="timer">10</div>
 </body>
 
 </html>
