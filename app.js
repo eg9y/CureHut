@@ -47,7 +47,7 @@ app.get("/", (req, res) => {
 });
 
 app.use("/auth", authRouter);
-app.use("/dashboard", dashboardRouter);
+app.use("/portal", dashboardRouter);
 app.use("/profile", profileRouter);
 
 app.listen("3000", () => {
