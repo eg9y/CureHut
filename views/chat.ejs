@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Hello world</title>
+</head>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.4/socket.io.js"></script>
+<script>
+    var socket = io();
+
+    function sendMessage() {
+        const user = document.getElementById('message-container').getAttribute("name");
+        var msg = document.getElementById('chat').value;
+        if (msg) {
+            socket.emit('msg', { message: msg, username: user });
+        }
+    }
+    socket.on('newmsg', function (data) {
+        document.getElementById('message-container').innerHTML += '<div>' + data.username + ": " + data.message + '</div>';
+    });
+</script>
+
+<body>
+    <div name=<%=username %> id="message-container"></div>
+    <form>
+        Chat
+        <br>
+        <input type="text" name="chat" id="chat">
+        <br>
+        <button type="button" name="button" id="message" onclick="sendMessage()">
+            chat
+        </button>
+    </form>
+</body>
+
+</html>

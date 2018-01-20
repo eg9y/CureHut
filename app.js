@@ -47,9 +47,19 @@ app.get("/", (req, res) => {
 });
 
 app.use("/auth", authRouter);
-app.use("/dashboard", dashboardRouter);
+app.use("/portal", dashboardRouter);
 app.use("/profile", profileRouter);
 
-app.listen("3000", () => {
-  console.log("Listening to port 3000");
+const io = require("socket.io").listen(
+  app.listen(3000, () => {
+    console.log("connected to 3000");
+  })
+);
+
+io.on("connection", function(socket) {
+  console.log("A user connected");
+  socket.on("msg", function(data) {
+    //Send message to everyone
+    io.sockets.emit("newmsg", data);
+  });
 });

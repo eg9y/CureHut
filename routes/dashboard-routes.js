@@ -8,8 +8,14 @@ const authCheck = (req, res, next) => {
 };
 
 router.get("/", authCheck, (req, res) => {
-  res.render("dashboard", {
+  res.render("portal", {
     user: req.user
+  });
+});
+
+router.get("/chat", authCheck, (req, res) => {
+  res.render("chat", {
+    username: req.user.username
   });
 });
 
