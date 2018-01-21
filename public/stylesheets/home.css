@@ -36,10 +36,24 @@ img {
   border-radius: 15px;
 }
 @media only screen and (max-width: 729px) {
-   .mobile-hide{ display: none !important; }
+   .img-hide{ display: none !important; }
 }
 @media only screen and (max-width: 933px) {
    #nav-icon{ display: none !important; }
+
+}
+@media only screen and (max-width: 545px) {
+  .nav-extended {
+    height: 100px !important;
+  }
+  .mobile-hide{ display: none !important; }
+  .mobile-appear{ display: block !important; }
+  #chat-wrapper {
+    padding-top: 40px;
+  }
+}
+.mobile-appear {
+    display: none;
 }
 div {
   display: block;
