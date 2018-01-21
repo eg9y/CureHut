@@ -126,18 +126,17 @@ io.on("connection", socket => {
       return callback("Room is required");
     }
     const room = io.sockets.adapter.rooms[params.room];
+
     if (room) {
       const roomLength = room.length;
-      if (roomLength >= 2) {
+      if (roomLength >= 2 && params.spectate == "false") {
         return callback(`Room ${params.room} already has 2 chatters`);
       }
       const checkRoomDetails = roomDetails.findIndex(room => {
         return room.room === params.room;
       });
-
-      console.log("checkroom", checkRoomDetails);
-
-      if (checkRoomDetails !== -1) {
+      console.log("checky check", typeof params.spectate);
+      if (checkRoomDetails !== -1 && params.spectate == "false") {
         console.log(checkRoomDetails);
         roomDetails[checkRoomDetails].count++;
       }
@@ -147,26 +146,30 @@ io.on("connection", socket => {
         count: 1
       });
     }
+
     socket.join(params.room);
-    users.removeUser(socket.id);
-    users.addUser(socket.id, params.username, params.room);
+    if (params.spectate == "false") {
+      users.removeUser(socket.id);
+    }
+    users.addUser(socket.id, params.username, params.room, params.spectate);
 
     saveUsers = users.getUserList(getParams.room);
-    console.log("saveUsers", saveUsers);
+    console.log("saveUsers", getParams);
     io.to(params.room).emit("sendDetails", roomDetails, params.room);
 
-    console.log("new user connected. Room: ", users.getRoomList());
-
     io.to(params.room).emit("updateUserList", users.getUserList(params.room));
-    socket.emit(
-      "newMsg",
-      generateMsg("Admin", `Welcome to room ${params.room}!`)
-    );
-    socket.broadcast.to(params.room).emit("newMsg", {
-      from: "Admin",
-      text: `User ${params.username} joined`,
-      createdAt: new Date().getTime()
-    });
+
+    if (params.spectate == "false") {
+      socket.emit(
+        "newMsg",
+        generateMsg("Admin", `Welcome to room ${params.room}!`)
+      );
+      socket.broadcast.to(params.room).emit("newMsg", {
+        from: "Admin",
+        text: `User ${params.username} joined`,
+        createdAt: new Date().getTime()
+      });
+    }
     callback();
   });
 
@@ -182,14 +185,11 @@ io.on("connection", socket => {
       roomToReduce = roomDetails.findIndex(room => {
         return room.room === getParams.room;
       });
-      console.log("roomToReduce", roomToReduce);
       if (
         roomToReduce !== undefined &&
         roomDetails[roomToReduce] &&
         roomDetails[roomToReduce].count > 0
       ) {
-        console.log("roomtoreduce", roomToReduce);
-        console.log("roomDetails", roomDetails[roomToReduce]);
         roomDetails[roomToReduce].count--;
         if (roomDetails[roomToReduce].count === 0) {
           roomDetails.splice(roomToReduce, 1);
@@ -199,7 +199,7 @@ io.on("connection", socket => {
     console.log("user disconnected");
     const user = users.removeUser(socket.id);
 
-    if (user) {
+    if (user && !getParams.spectate) {
       io.to(user.room).emit("updateUserList", users.getUserList(user.room));
       io
         .to(user.room)

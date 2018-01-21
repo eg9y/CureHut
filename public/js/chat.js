@@ -15,7 +15,7 @@ const startTheTimer = () => {
     },
     () => {}
   );
-  setTimeout(chatIsDone, 10000);
+  setTimeout(chatIsDone, 30000);
 
   function jpTimer() {
     var secTime = 0,
@@ -45,8 +45,10 @@ const startTheTimer = () => {
         newMin = minTime.toString().length == 1 ? "0" + minTime : minTime,
         newHour = hourTime.toString().length == 1 ? "0" + hourTime : hourTime;
 
-      document.getElementById("timer").innerHTML =
-        newHour + ":" + newMin + ":" + newSec;
+      if (document.getElementById("timer")) {
+        document.getElementById("timer").innerHTML =
+          newHour + ":" + newMin + ":" + newSec;
+      }
 
       secTime++;
     }, 1000);
@@ -75,14 +77,12 @@ socket.on("sendDetails", (roomDetails, roomname) => {
   const theRoom = roomDetails.filter(room => {
     return room.room === roomname;
   })[0];
-  console.log("theRoom", theRoom);
   if (theRoom.count === 2) {
     startTheTimer();
   }
 });
 
 socket.on("updateUserList", function(users) {
-  console.log("User List", users);
   const ol = $("<ol></ol>");
   users.forEach(user => {
     ol.append($("<li></li>").text(user));
@@ -98,10 +98,6 @@ socket.on("newMsg", function(msg) {
 
   // check if the message sent was by the current user
   var classToAdd;
-  console.log("params.username:");
-  console.log(params.username);
-  console.log("msg.from");
-  console.log(msg.from);
 
   if (params.username === msg.from) {
     classToAdd = "from-user";
