@@ -72,6 +72,7 @@ io.on("connection", socket => {
     }
     socket.join(params.room);
     users.removeUser(socket.id);
+    console.log(params);
     users.addUser(socket.id, params.username, params.room);
 
     console.log(users.users);

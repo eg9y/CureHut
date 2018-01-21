@@ -1,7 +1,7 @@
 const socket = io();
 
+const params = $.deparam(window.location.search);
 socket.on("connect", function() {
-  const params = $.deparam(window.location.search);
   socket.emit("join", params, err => {
     if (err) {
       alert(err);
@@ -27,18 +27,24 @@ socket.on("updateUserList", function(users) {
 
 socket.on("newMsg", function(msg) {
   const formattedTime = moment(msg.createdAt).format("h: mm a");
-  const template = $("#message-template").html();
-  const html = ejs.render(template, {
-    from: msg.from,
-    text: msg.text,
-    createdAt: formattedTime
-  });
 
-  $("#messages").append(html);
+  // add the new message to the container
+  msgContainer = document.getElementById("message-container");
+  msgContainer.innerHTML +=
+    '<div class="chat-messages > <span class="username">' +
+    params.username +
+    "</span><p>" +
+    msg.text +
+    '</p><p class="timestamp">' +
+    formattedTime +
+    "</p></div>";
+
+  // scroll to the bottom when a new message is sent
+  var elem = document.getElementById("chat-wrapper");
+  elem.scrollTop = elem.scrollHeight;
 });
 
 $("#message-form").on("submit", e => {
-  const params = $.deparam(window.location.search);
   e.preventDefault();
   socket.emit(
     "createMsg",
