@@ -84,6 +84,9 @@
       <div class="row">
         <% for(let x = 0; x < userList.length; x++) { %>
           <% if(user.username !== userList[x]) { %>
+            <h3>username:
+              <%userList[x]%>
+            </h3>
             <input type="hidden" name="username" value=<%=userList[x]%>>
             <div class="col m4 s12">
               <i class="large material-icons">mood</i>
