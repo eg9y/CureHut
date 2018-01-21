@@ -64,6 +64,7 @@ const { isRealString } = require("./server/utils/validation.js");
 const { Users } = require("./server/utils/users.js");
 let roomDetails = [];
 let getParams;
+let saveUsers;
 
 app.get("/chatroom", authCheck, (req, res) => {
   res.render("chatroom", {
@@ -86,7 +87,7 @@ app.get("/spectate", authCheck, (req, res) => {
 app.get("/feedback", authCheck, (req, res) => {
   res.render("feedback", {
     user: req.user,
-    userList: users.getUserList(getParams.room)
+    userList: saveUsers
   });
 });
 
@@ -113,6 +114,8 @@ io.on("connection", socket => {
         return room.room === params.room;
       });
 
+      console.log("checkroom", checkRoomDetails);
+
       if (checkRoomDetails !== -1) {
         console.log(checkRoomDetails);
         roomDetails[checkRoomDetails].count++;
@@ -124,11 +127,13 @@ io.on("connection", socket => {
       });
     }
     socket.join(params.room);
-
-    io.to(params.room).emit("sendDetails", roomDetails, params.room);
-
     users.removeUser(socket.id);
     users.addUser(socket.id, params.username, params.room);
+
+    saveUsers = users.getUserList(getParams.room);
+    console.log("saveUsers", saveUsers);
+    io.to(params.room).emit("sendDetails", roomDetails, params.room);
+
     console.log("new user connected. Room: ", users.getRoomList());
 
     io.to(params.room).emit("updateUserList", users.getUserList(params.room));

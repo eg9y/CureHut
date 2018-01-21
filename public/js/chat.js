@@ -1,7 +1,8 @@
 const params = $.deparam(window.location.search);
 
 const chatIsDone = () => {
-  window.location.assign("http://localhost:3000/portal");
+  alert("Time is Up :(");
+  window.location.assign("http://localhost:3000/feedback");
 };
 let timer = 10;
 
@@ -14,7 +15,7 @@ const startTheTimer = () => {
     },
     () => {}
   );
-  setTimeout(chatIsDone, 600000);
+  setTimeout(chatIsDone, 10000);
 
   function jpTimer() {
     var secTime = 0,
