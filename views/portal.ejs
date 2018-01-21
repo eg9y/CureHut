@@ -62,9 +62,9 @@
           <strong>Time Bar</strong>
           <abbr title="You lose time credits when you CHAT; you gain time credits at twice the rate when you SPECTATE.">(?)</abbr>
           <div class="progress">
-            <div class="determinate" style="width: 70%"></div>
+            <div class="determinate" style="width: <%= Math.min(100, (user.time / 60)*100) %>%"></div>
           </div>
-          <span>63</span> CHAT Minutes
+          <span><%= user.time%></span> CHAT Minutes
 
         </div>
       </div>
@@ -88,7 +88,7 @@
           <strong>Streaks</strong>
           <abbr title="Writing a journal entry DAILY will increase you STREAK.">(?)</abbr>
           <p class="p-sidebar">
-            # Days
+            0 Days
           </p>
 
         </div>
@@ -238,10 +238,10 @@
 This is to encourage people to SPECTATE.">(?)</abbr>
             <!-- The spacing on this line is intentional. -->
             <div class="progress">
-              <div class="determinate" style="width: <%=(user.time / 60)*100%>"></div>
+              <div class="determinate" style="width: <%= Math.min(100, (user.time / 60)*100) %>%"></div>
             </div>
             <span>
-              <%=user.time%>
+              <%= user.time%>&nbsp; 
             </span> CHAT Minutes
 
           </div>
@@ -266,7 +266,11 @@ This is to encourage people to SPECTATE.">(?)</abbr>
             <strong>Streaks</strong>
             <abbr title="Writing a journal entry DAILY will increase you STREAK.">(?)</abbr>
             <p class="p-sidebar">
+<<<<<<< HEAD
               <%= user.streaks%> Days
+=======
+              0 Days
+>>>>>>> ae2ed6e0f966e8705cff2a7b8fb935a62139ee29
             </p>
 
           </div>
