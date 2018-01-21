@@ -8,6 +8,8 @@
     <title>Join | FeelSociety</title>
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
     <link rel="stylesheet" href="/stylesheets/chatbrowser.css" />
+    <!-- Google Fonts-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <!-- FAVICON-->
     <link rel="shortcut icon" type="image/png" href="/images/favicon.png"/>
 </head>
@@ -31,9 +33,7 @@
             <select name="Icecream Flavours xD" id="activerooms" onclick="getRoom()">
               <% for(let x = 0; x < roomList.length; x++) { %>
                 <option value=<%=roomList[x] %>>
-              <%=roomList[x] %>
-              c=
-              <%=roomDetails[x].count %>
+              <%=roomList[x] %> (<%=roomDetails[x].count %>)
                 </option>
               <% } %>
             </select>
