@@ -39,9 +39,15 @@
             classToAdd = "to-user";
         }
 
+        // insert timestamp here
+        var timestamp = "12:00";
+
         // add the new message to the container
         msgContainer = document.getElementById('message-container');
-        msgContainer.innerHTML += '<div class="chat-messages ' + classToAdd + '"> <span class="username">' + data.username + "</span><p>" + data.message + '</p></div>';
+        msgContainer.innerHTML += '<div class="chat-messages ' + classToAdd 
+            + '"> <span class="username">' + data.username 
+            + "</span><p>" + data.message 
+            + '</p><p class="timestamp">' + timestamp + '</p></div>';
 
 
 

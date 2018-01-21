@@ -34,7 +34,7 @@
  }
 
  /*style for username string*/
- .username{
+ .username, .timestamp{
  	left: 5px;
  	font-style: italic;
  	font-size: 10px;
