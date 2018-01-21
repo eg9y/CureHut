@@ -44,10 +44,14 @@ socket.on("newMsg", function(msg) {
     classToAdd = "to-user";
   }
 
+  if(msg.from === 'Admin'){
+    classToAdd += ' from-admin';
+  }
+
   msgContainer.innerHTML += 
-    '<div class="z-depth-1 chat-messages ' + classToAdd 
+    '<div class="message-retainer"><div class="z-depth-1 chat-messages ' + classToAdd 
     + '"> <span class="timestamp">' + formattedTime 
-    + "</span><p>" + msg.text + '</p></div>';
+    + "</span><p>" + msg.text + '</p></div></div>';
 
   // msgContainer.innerHTML +=
   //   '<div class="chat-messages > <span class="username">' +
