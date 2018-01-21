@@ -30,14 +30,33 @@ socket.on("newMsg", function(msg) {
 
   // add the new message to the container
   msgContainer = document.getElementById("message-container");
-  msgContainer.innerHTML +=
-    '<div class="chat-messages > <span class="username">' +
-    params.username +
-    "</span><p>" +
-    msg.text +
-    '</p><p class="timestamp">' +
-    formattedTime +
-    "</p></div>";
+
+  // check if the message sent was by the current user
+  var classToAdd;
+  console.log("params.username:");
+  console.log(params.username);
+  console.log("msg.from");
+  console.log(msg.from);
+
+  if(params.username === msg.from){
+    classToAdd = "from-user";
+  } else{
+    classToAdd = "to-user";
+  }
+
+  msgContainer.innerHTML += 
+    '<div class="z-depth-1 chat-messages ' + classToAdd 
+    + '"> <span class="timestamp">' + formattedTime 
+    + "</span><p>" + msg.text + '</p></div>';
+
+  // msgContainer.innerHTML +=
+  //   '<div class="chat-messages > <span class="username">' +
+  //   params.username +
+  //   "</span><p>" +
+  //   msg.text +
+  //   '</p><p class="timestamp">' +
+  //   formattedTime +
+  //   "</p></div>";
 
   // scroll to the bottom when a new message is sent
   var elem = document.getElementById("chat-wrapper");

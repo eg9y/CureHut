@@ -35,7 +35,6 @@ class Users {
       return user.room;
     });
     rooms = _.uniq(rooms);
-    console.log("rooms from users.js", rooms);
     return rooms;
   }
 }

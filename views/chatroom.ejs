@@ -26,7 +26,11 @@
                 <input type="text" name="room" id="room" autofocus>
                 <label for="">Active Rooms</label>
                 <select name="Icecream Flavours" id="activerooms" onclick="getRoom()">
-
+                    <% for(let x = 0; x < roomList.length; x++) { %>
+                        <option value=<%=roomList[x] %>>
+                            <%=roomList[x] %>
+                        </option>
+                        <% } %>
                 </select>
 
                 <input type="hidden" name="username" value=<%=username%>
