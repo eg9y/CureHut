@@ -11,36 +11,46 @@
 
 <body class="centered-form">
     <div class="centered-form__form">
-        <form action="/chat.html">
-            <div class="form-field">
-                <h3>Join a Chat</h3>
-            </div>
-            <div>
-                <h2>
-                    <strong>username:</strong>
-                    <%=username%>
-                </h2>
-            </div>
-            <div class="form-field">
-                <label for="">Room name</label>
-                <input type="text" name="room" id="room" autofocus>
-                <label for="">Active Rooms</label>
-                <select name="Icecream Flavours" id="activerooms" onclick="getRoom()">
-                    <% for(let x = 0; x < roomList.length; x++) { %>
-                        <option value=<%=roomList[x] %>>
-                            <%=roomList[x] %>
-                                c=
-                                <%=roomDetails[x].count %>
-                        </option>
+        <% if(!spectate) { %>
+            <form action="/chat.html" name="chat">
+                <% } else { %>
+                    <form action="/spectate.html" name="spectate">
                         <% } %>
-                </select>
+                            <div class="form-field">
+                                <h3>Join a Chat</h3>
+                            </div>
+                            <div>
+                                <h2>
+                                    <strong>username:</strong>
+                                    <%=username%>
+                                </h2>
+                            </div>
+                            <div class="form-field">
+                                <label for="">Room name</label>
+                                <input type="text" name="room" id="room" autofocus>
+                                <label for="">Active Rooms</label>
+                                <select name="Icecream Flavours" id="activerooms" onclick="getRoom()">
+                                    <% for(let x = 0; x < roomList.length; x++) { %>
+                                        <option value=<%=roomList[x] %>>
+                                            <%=roomList[x] %>
+                                                c=
+                                                <%=roomDetails[x].count %>
+                                        </option>
+                                        <% } %>
+                                </select>
 
-                <input type="hidden" name="username" value=<%=username%>
-            </div>
-            <div class="form-field">
-                <button>Join</button>
-            </div>
-        </form>
+                                <input type="hidden" name="username" value=<%=username%>
+                            </div>
+                            <div class="form-field">
+                                <button>
+                                    <% if(!spectate) { %>
+                                        Join
+                                        <% } else { %>
+                                            Spectate
+                                            <% } %>
+                                </button>
+                            </div>
+                    </form>
     </div>
 
     <script>

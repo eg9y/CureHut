@@ -39,13 +39,6 @@ router.post("/", (req, res) => {
   });
 });
 
-router.get("/spectate", authCheck, (req, res) => {
-  res.render("chat", {
-    username: req.user.username,
-    spectate: true
-  });
-});
-
 router.get("/journal", authCheck, (req, res) => {
   res.send("Add journal");
 });

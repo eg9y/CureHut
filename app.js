@@ -74,6 +74,15 @@ app.get("/chatroom", authCheck, (req, res) => {
   });
 });
 
+app.get("/spectate", authCheck, (req, res) => {
+  res.render("chatroom", {
+    username: req.user.username,
+    roomList: users.getRoomList(),
+    roomDetails,
+    spectate: true
+  });
+});
+
 const http = require("http");
 const socketIO = require("socket.io");
 // use http server instead of express server
