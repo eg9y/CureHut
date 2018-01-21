@@ -11,11 +11,18 @@ h2 {
   padding: 0 auto 10px auto ;
 }
 img {
-  max-width: 75%;
-  max-height: 75%;
+  max-width: 100%;
+  max-height: 100%;
 }
-.top-pad {
-  padding-top: 80px !important;
+.img-0 {
+  padding-top: 0 !important;
+  padding-bottom: 0px !important;
+}
+.img-1 {
+  padding-top: 2rem !important;
+}
+.img-2 {
+  padding-top: 2rem !important;
 }
 #dash {
   max-width: 50%;
