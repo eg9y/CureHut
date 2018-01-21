@@ -15,8 +15,6 @@ const passportSetup = require("./config/passport-setup");
 // set up view engine
 app.set("view engine", "ejs");
 
-app.use(express.static(__dirname + "/public"));
-
 const bodyParser = require("body-parser");
 app.use(bodyParser.json()); // to support JSON-encoded bodies
 app.use(
@@ -35,7 +33,8 @@ app.use(
 
 app.use(passport.initialize());
 app.use(passport.session());
-app.use(express.static(__dirname + "/public"));
+const path = require("path");
+app.use(express.static(path.join(__dirname, "public")));
 
 // connecct to mongodb
 mongoose.connect(keys.mongodb.dbURI, () => {
@@ -52,16 +51,63 @@ app.use("/auth", authRouter);
 app.use("/portal", dashboardRouter);
 app.use("/profile", profileRouter);
 
-const io = require("socket.io").listen(
-  app.listen(3000, () => {
-    console.log("connected to 3000");
-  })
-);
+//////////////////////////////////////////////////////////////////////
+const { generateMsg } = require("./server/utils/message.js");
+const { isRealString } = require("./server/utils/validation.js");
+const { Users } = require("./server/utils/users.js");
 
-io.on("connection", function(socket) {
-  console.log("A user connected");
-  socket.on("msg", function(data) {
-    //Send message to everyone
-    io.sockets.emit("newmsg", data);
+const http = require("http");
+const socketIO = require("socket.io");
+// use http server instead of express server
+const server = http.createServer(app);
+const io = socketIO(server);
+let users = new Users();
+
+io.on("connection", socket => {
+  console.log("new user connected");
+
+  socket.on("join", (params, callback) => {
+    if (!isRealString(params.room)) {
+      return callback("Room is required");
+    }
+    socket.join(params.room);
+    users.removeUser(socket.id);
+    users.addUser(socket.id, params.username, params.room);
+
+    console.log(users.users);
+    io.to(params.room).emit("updateUserList", users.getUserList(params.room));
+    socket.emit(
+      "newMsg",
+      generateMsg("Admin", `Welcome to room ${params.room}!`)
+    );
+    socket.broadcast.to(params.room).emit("newMsg", {
+      from: "Admin",
+      text: `User ${params.username} joined`,
+      createdAt: new Date().getTime()
+    });
+    callback();
   });
+
+  socket.on("createMsg", (msg, callback) => {
+    const user = users.getUser(socket.id);
+    if (user && isRealString(msg.text))
+      io.to(user.room).emit("newMsg", generateMsg(user.username, msg.text));
+    callback("dis from server");
+  });
+
+  socket.on("disconnect", () => {
+    console.log("user disconnected");
+    const user = users.removeUser(socket.id);
+
+    if (user) {
+      io.to(user.room).emit("updateUserList", users.getUserList(user.room));
+      io
+        .to(user.room)
+        .emit("newMsg", generateMsg("Admin", `${user.username} has quit`));
+    }
+  });
+});
+
+server.listen(3000, () => {
+  console.log("Listening to port 3000");
 });

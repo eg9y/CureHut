@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0 user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Chat | FeelsChat</title>
+</head>
+
+<body>
+    Chat Room
+
+    <ol id="messages"></ol>
+
+    <form action="" id="message-form">
+        <input name="message" type="text" placeholder="Message" autofocus autocomplete="false" />
+        <button>Send</button>
+    </form>
+
+    <div id="users"></div>
+
+    <script id="message-template" type="text/template">
+        <li class="message">
+            <h4>
+                <%=from%> <%=createdAt%>: <%=text%>
+            </h4>
+        </li>
+    </script>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/js/libs/jquery-3.3.1.min.js"></script>
+    <script src="/js/libs/moment.js"></script>
+    <script src="/js/libs/ejs.min.js"></script>
+    <script src="/js/libs/deparam.js"></script>
+    <script src="/js/chat.js"></script>
+</body>
+
+</html>
