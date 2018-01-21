@@ -3,6 +3,8 @@
 
 <head>
     <title>Hello world</title>
+    <!-- FAVICON-->
+    <link rel="shortcut icon" type="image/png" href="/images/favicon.png"/>
 </head>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.4/socket.io.js"></script>

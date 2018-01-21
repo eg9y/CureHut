@@ -1,6 +1,11 @@
 #header {
   padding: 10% 10%;
 }
+#nav-icon {
+  max-width: 10%;
+  max-height: 10%;
+
+}
 hr {
   width: 20em;
 }
@@ -32,6 +37,9 @@ img {
 }
 @media only screen and (max-width: 729px) {
    .mobile-hide{ display: none !important; }
+}
+@media only screen and (max-width: 933px) {
+   #nav-icon{ display: none !important; }
 }
 div {
   display: block;
