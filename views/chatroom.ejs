@@ -15,6 +15,7 @@
 </head>
 
 <body>
+<<<<<<< HEAD
   <div class="container center-piece">
     <% if(!spectate) { %>
       <form action="/chat.html" name="chat">
@@ -38,6 +39,43 @@
               <% } %>
             </select>
           </div>
+=======
+    <div class="container center-piece">
+        <% if(!spectate) { %>
+            <form action="/chat.html" name="chat">
+                <% } else { %>
+                    <form action="/spectate.html" name="spectate">
+                        <% } %>
+                            <h3>Join a Chat</h3>
+                            <h2>Your username is "
+                                <%=username%>"</h2>
+                            <div class="form-field">
+                                <div class="space">
+                                    <label for="">Room name</label>
+                                    <% if (!spectate) { %>
+                                        <input type="text" name="room" id="room" autofocus>
+                                        <% } else { %>
+                                            <input type="text" name="room" id="room" disabled autofocus>
+                                            <% } %>
+                                </div>
+                                <div class="space">
+                                    <label for="">Active Rooms</label>
+                                    <select name="room" id="activerooms" onclick="getRoom()">
+                                        <% for(let x = 0; x < roomList.length; x++) { %>
+                                            <option value=<%=roomList[x] %>>
+                                                <%=roomList[x] %>
+                                                    (
+                                                    <% if(roomDetails[x]) { %>
+                                                        <%=roomDetails[x].count%>
+                                                            <% } %>
+                                                                )
+                                            </option>
+                                            <% } %>
+                                                <input type="hidden" name="spectate" value=<%=spectate%>>
+                                                <input type="hidden" name="username" value=<%=username%>>
+                                    </select>
+                                </div>
+>>>>>>> f552318b2e40e57ac5cde55835a36ce39a625f7c
 
                             </div>
 

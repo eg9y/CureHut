@@ -9,6 +9,11 @@
     <title>Spectate | FeelSociety</title>
     <!--Import Google Icon Font-->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <style>
+        #chat-wrapper{
+            height: 100% !important;
+        }
+    </style>
     <!--Import materialize.css-->
     <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-alpha.3/css/materialize.min.css"
         media="screen,projection" />
@@ -23,18 +28,39 @@
 
 <body>
 
-    <header class="navbar-fixed">
-        <nav>
-            <div class="nav-wrapper cyan darken-4">
-                <div class="container">
-                    <span href="#" class="brand-logo center">Logo</span>
-                    <a href="#" data-target="mobile" class="sidenav-trigger">
-                        <i class="material-icons">menu</i>
-                    </a>
+    <div class="navbar-fixed">
+        <nav class="nav-extended cyan darken-4">
+            <div class="nav-wrapper container">
+                <a href="#!" class="brand-logo center">FeelSociety</a>
+                <ul class="left mobile-hide">
+                    <li>
+                        <a href="/feedback">Leave Chat Room</a>
+                    </li>
+                </ul>
+                <ul class="right mobile-hide">
+                    <li>Timer:
+                        <span id="timerDiff">00:00:00</span>
+                    </li>
+                </ul>
+                <ul class="right mobile-appear">
+                    <li style="visibility: hidden;">X</li>
+                </ul>
+                <div class="nav-content mobile-appear">
+                    <ul class="tabs tabs-transparent">
+                        <li class="tab">
+                            <a href="/feedback">Leave Chat Room</a>
+                        </li>
+                        <li class="tab"></li>
+                        <li class="tab"></li>
+                        <li class="tab">Timer:
+                            <span id="timer">00:00:00</span>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </nav>
-    </header>
+    </div>
+
 
     <h1> Chatroom </h1>
     <div id="chat-wrapper">

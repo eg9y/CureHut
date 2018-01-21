@@ -95,7 +95,6 @@ app.post("/feedback", authCheck, (req, res) => {
     username: req.body.username
   })
     .then(user => {
-      console.log("weiner", user);
       if (req.body.commend) {
         if (req.body.commend == "Friendly") {
           user.friendly++;
@@ -125,26 +124,26 @@ io.on("connection", socket => {
     if (!isRealString(params.room)) {
       return callback("Room is required");
     }
-    const room = io.sockets.adapter.rooms[params.room];
+    if (
+      users.getUserList(params.room).length >= 2 &&
+      params.spectate == "false"
+    ) {
+      return callback(`Room ${params.room} already has 2 chatters`);
+    }
 
-    if (room) {
-      const roomLength = room.length;
-      if (roomLength >= 2 && params.spectate == "false") {
-        return callback(`Room ${params.room} already has 2 chatters`);
-      }
-      const checkRoomDetails = roomDetails.findIndex(room => {
-        return room.room === params.room;
-      });
-      console.log("checky check", typeof params.spectate);
-      if (checkRoomDetails !== -1 && params.spectate == "false") {
-        console.log(checkRoomDetails);
-        roomDetails[checkRoomDetails].count++;
-      }
-    } else if (params.room) {
+    const checkRoom = roomDetails.findIndex(room => {
+      return room.room === getParams.room;
+    });
+    if (checkRoom === -1) {
       roomDetails.push({
         room: params.room,
         count: 1
       });
+    } else {
+      if (params.spectate == "false") {
+        console.log("checkroom", checkRoom);
+        roomDetails[checkRoom].count++;
+      }
     }
 
     socket.join(params.room);
@@ -154,7 +153,6 @@ io.on("connection", socket => {
     users.addUser(socket.id, params.username, params.room, params.spectate);
 
     saveUsers = users.getUserList(getParams.room);
-    console.log("saveUsers", getParams);
     io.to(params.room).emit("sendDetails", roomDetails, params.room);
 
     io.to(params.room).emit("updateUserList", users.getUserList(params.room));
