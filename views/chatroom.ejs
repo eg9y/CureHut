@@ -8,11 +8,38 @@
     <title>Join | FeelSociety</title>
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
     <link rel="stylesheet" href="/stylesheets/chatbrowser.css" />
+    <!-- Google Fonts-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <!-- FAVICON-->
     <link rel="shortcut icon" type="image/png" href="/images/favicon.png" />
 </head>
 
 <body>
+<<<<<<< HEAD
+  <div class="container center-piece">
+    <% if(!spectate) { %>
+      <form action="/chat.html" name="chat">
+    <% } else { %>
+      <form action="/spectate.html" name="spectate">
+    <% } %>
+        <h3>Join a Chat</h3>
+        <h2>Your username is "<%=username%>"</h2>
+        <div class="form-field">
+          <div class="space">
+            <label for="">Room name</label>
+            <input type="text" name="room" id="room" autofocus>
+          </div>
+          <div class="space">
+            <label for="">Active Rooms</label>
+            <select name="Icecream Flavours xD" id="activerooms" onclick="getRoom()">
+              <% for(let x = 0; x < roomList.length; x++) { %>
+                <option value=<%=roomList[x] %>>
+              <%=roomList[x] %> (<%=roomDetails[x].count %>)
+                </option>
+              <% } %>
+            </select>
+          </div>
+=======
     <div class="container center-piece">
         <% if(!spectate) { %>
             <form action="/chat.html" name="chat">
@@ -43,6 +70,7 @@
                                                 <input type="hidden" name="username" value=<%=username%>>
                                     </select>
                                 </div>
+>>>>>>> 08b3b93bf7a28d82b7ebcc5483114ccfd9fbbe77
 
                             </div>
 
