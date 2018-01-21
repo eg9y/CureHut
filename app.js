@@ -75,6 +75,9 @@ app.get("/chatroom", authCheck, (req, res) => {
 });
 
 app.get("/spectate", authCheck, (req, res) => {
+  User.findById(req.user.id).then(user => {
+    user.spectate = true;
+  });
   res.render("chatroom", {
     username: req.user.username,
     roomList: users.getRoomList(),
@@ -85,7 +88,11 @@ app.get("/spectate", authCheck, (req, res) => {
 
 app.get("/feedback", authCheck, (req, res) => {
   User.findById(req.user.id).then(user => {
-    user.time -= 10;
+    if (user.spectate) {
+      user.time += 20;
+    } else {
+      user.time -= 10;
+    }
     return user.save();
   });
   res.render("feedback", {
