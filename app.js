@@ -7,7 +7,6 @@ require("dotenv").config();
 const app = express();
 const authRouter = require("./routes/auth-routes");
 const dashboardRouter = require("./routes/dashboard-routes");
-const profileRouter = require("./routes/profile-routes");
 
 //will run passport.use later on so "google" strategy will be defined
 const passportSetup = require("./config/passport-setup");
@@ -48,7 +47,6 @@ app.get("/", (req, res) => {
 });
 
 app.use("/auth", authRouter);
-app.use("/profile", profileRouter);
 app.use("/portal", dashboardRouter);
 
 const authCheck = (req, res, next) => {
@@ -64,6 +62,7 @@ const { isRealString } = require("./server/utils/validation.js");
 const { Users } = require("./server/utils/users.js");
 let roomDetails = [];
 let getParams;
+let saveUsers;
 
 app.get("/chatroom", authCheck, (req, res) => {
   res.render("chatroom", {
@@ -86,7 +85,7 @@ app.get("/spectate", authCheck, (req, res) => {
 app.get("/feedback", authCheck, (req, res) => {
   res.render("feedback", {
     user: req.user,
-    userList: users.getUserList(getParams.room)
+    userList: saveUsers
   });
 });
 
@@ -113,6 +112,8 @@ io.on("connection", socket => {
         return room.room === params.room;
       });
 
+      console.log("checkroom", checkRoomDetails);
+
       if (checkRoomDetails !== -1) {
         console.log(checkRoomDetails);
         roomDetails[checkRoomDetails].count++;
@@ -124,9 +125,13 @@ io.on("connection", socket => {
       });
     }
     socket.join(params.room);
-    socket.emit("sendDetails", roomDetails, params.room);
     users.removeUser(socket.id);
     users.addUser(socket.id, params.username, params.room);
+
+    saveUsers = users.getUserList(getParams.room);
+    console.log("saveUsers", saveUsers);
+    io.to(params.room).emit("sendDetails", roomDetails, params.room);
+
     console.log("new user connected. Room: ", users.getRoomList());
 
     io.to(params.room).emit("updateUserList", users.getUserList(params.room));
@@ -155,10 +160,17 @@ io.on("connection", socket => {
         return room.room === getParams.room;
       });
       console.log("roomToReduce", roomToReduce);
-      if (roomToReduce !== undefined && roomDetails[roomToReduce]) {
+      if (
+        roomToReduce !== undefined &&
+        roomDetails[roomToReduce] &&
+        roomDetails[roomToReduce].count > 0
+      ) {
         console.log("roomtoreduce", roomToReduce);
         console.log("roomDetails", roomDetails[roomToReduce]);
         roomDetails[roomToReduce].count--;
+        if (roomDetails[roomToReduce].count === 0) {
+          roomDetails.splice(roomToReduce, 1);
+        }
       }
     }
     console.log("user disconnected");

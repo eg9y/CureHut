@@ -1,13 +1,16 @@
 const params = $.deparam(window.location.search);
 
 const chatIsDone = () => {
-  window.location.assign("http://localhost:3000/portal");
+  alert("Time is Up :(");
+  if (process.env.PORT === 3000) {
+    window.location.assign("http://localhost:3000/feedback");
+  } else {
+    window.location.assign(
+      "http://aqueous-coast-83469.herokuapp.com//feedback"
+    );
+  }
 };
 let timer = 10;
-const countDown = () => {
-  $("#timer").text(timer);
-  timer--;
-};
 
 const startTheTimer = () => {
   socket.emit(
@@ -18,8 +21,44 @@ const startTheTimer = () => {
     },
     () => {}
   );
-  setTimeout(chatIsDone, 600000);
-  setInterval(countDown, 3000);
+  setTimeout(chatIsDone, 10000);
+
+  function jpTimer() {
+    var secTime = 0,
+      minTime = 0,
+      hourTime = 0;
+
+    setInterval(function() {
+      var maxSec = 59,
+        maxMin = 59,
+        maxHour = 59;
+
+      if (secTime > maxSec) {
+        minTime++;
+        if (minTime > maxMin) {
+          hourTime++;
+          if (hourTime > maxHour) {
+            hourTime = 0;
+            minTime = 0;
+            secTime = 0;
+          }
+          minTime = 0;
+        }
+        secTime = 0;
+      }
+
+      var newSec = secTime.toString().length == 1 ? "0" + secTime : secTime,
+        newMin = minTime.toString().length == 1 ? "0" + minTime : minTime,
+        newHour = hourTime.toString().length == 1 ? "0" + hourTime : hourTime;
+
+      document.getElementById("timer").innerHTML =
+        newHour + ":" + newMin + ":" + newSec;
+
+      secTime++;
+    }, 1000);
+  }
+
+  jpTimer();
 };
 
 const socket = io();

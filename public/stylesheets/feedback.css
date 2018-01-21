@@ -1,4 +1,7 @@
-h1 {
-	color: pink;
-	border: 5px solid purple;
+.col {
+	text-align: center;
+}
+
+#report-column {
+	border-left: 2px solid black;
 }

@@ -28,7 +28,8 @@ router.get("/", authCheck, (req, res) => {
 router.post("/", (req, res) => {
   const newJournal = new Journal({
     title: req.body.title,
-    entry: req.body.entry
+    entry: req.body.entry,
+    feeling: req.body.feeling
   });
   User.findById(req.user.id).then(user => {
     user.journal.push(newJournal.id);

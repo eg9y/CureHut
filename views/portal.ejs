@@ -41,70 +41,72 @@
     </nav>
   </header>
 
-<!-- SIDENAV --------------------------------------------------------------->
+  <!-- SIDENAV --------------------------------------------------------------->
   <ul class="sidenav light-blue lighten-3" id="mobile">
-      <li>
-        <a href="/">Home</a>
-      </li>
-      <li>
-        <a href="/dashboard">Dashboard</a>
-      </li>
-      <li>
-        <a href="/auth/logout">Logout</a>
-      </li>
-      <div class="divider"></div>
-        <div class="light-blue lighten-3">
+    <li>
+      <a href="/">Home</a>
+    </li>
+    <li>
+      <a href="/dashboard">Dashboard</a>
+    </li>
+    <li>
+      <a href="/auth/logout">Logout</a>
+    </li>
+    <div class="divider"></div>
+    <div class="light-blue lighten-3">
 
-          <div class="section text-siderbar light-blue lighten-5">
-            <div class="container">
+      <div class="section text-siderbar light-blue lighten-5">
+        <div class="container">
 
-              <strong>Time Bar</strong>
-              <abbr title="You lose time credits when you CHAT; you gain time credits at twice the rate when you SPECTATE.">(?)</abbr>
-              <div class="progress">
-                <div class="determinate" style="width: 70%"></div>
-              </div>
-              <span>63</span> CHAT Minutes
-
-            </div>
+          <strong>Time Bar</strong>
+          <abbr title="You lose time credits when you CHAT; you gain time credits at twice the rate when you SPECTATE.">(?)</abbr>
+          <div class="progress">
+            <div class="determinate" style="width: 70%"></div>
           </div>
-          <div class="section text-siderbar light-blue lighten-4">
-            <div class="container">
+          <span>63</span> CHAT Minutes
 
-              <strong>Commends</strong>
-              <abbr title="Commends are rewarded to users by other users after they CHAT.">(?)</abbr>
-              <p class="p-sidebar">
-                <i class="material-icons">mood</i> #&nbsp;&nbsp;&nbsp;&nbsp;
-                <i class="material-icons">lightbulb_outline</i> #
-              </p>
-
-            </div>
-          </div>
-          <div class="section text-siderbar light-blue lighten-5">
-            <div class="container">
-
-              <strong>Streaks</strong>
-              <abbr title="Writing a journal entry DAILY will increase you STREAK.">(?)</abbr>
-              <p class="p-sidebar">
-                # Days
-              </p>
-
-            </div>
-          </div>
-
-          <div class="section light-blue lighten-4 no-pad-or-marg valign-wrapper">
-            <a class="waves-effect waves-teal btn-flat btn-sidebar center-align" href="/chatroom"><strong>Chat</strong>&nbsp;&nbsp;
-              <i class="material-icons">question_answer</i>
-            </a>
-            <!--href="portal/chat"-->
-          </div>
-          <div class="section light-blue lighten-5 no-pad-or-marg valign-wrapper">
-            <a class="waves-effect waves-teal btn-flat btn-sidebar center-align"><strong>Spectate</strong>&nbsp;&nbsp;
-              <i class="material-icons">remove_red_eye</i>
-            </a>
-          </div>
         </div>
+      </div>
+      <div class="section text-siderbar light-blue lighten-4">
+        <div class="container">
+
+          <strong>Commends</strong>
+          <abbr title="Commends are rewarded to users by other users after they CHAT.">(?)</abbr>
+          <p class="p-sidebar">
+            <i class="material-icons">mood</i> #&nbsp;&nbsp;&nbsp;&nbsp;
+            <i class="material-icons">lightbulb_outline</i> #
+          </p>
+
+        </div>
+      </div>
+      <div class="section text-siderbar light-blue lighten-5">
+        <div class="container">
+
+          <strong>Streaks</strong>
+          <abbr title="Writing a journal entry DAILY will increase you STREAK.">(?)</abbr>
+          <p class="p-sidebar">
+            # Days
+          </p>
+
+        </div>
+      </div>
+
+      <div class="section light-blue lighten-4 no-pad-or-marg valign-wrapper">
+        <a class="waves-effect waves-teal btn-flat btn-sidebar center-align" href="/chatroom">
+          <strong>Chat</strong>&nbsp;&nbsp;
+          <i class="material-icons">question_answer</i>
+        </a>
+        <!--href="portal/chat"-->
+      </div>
+      <div class="section light-blue lighten-5 no-pad-or-marg valign-wrapper">
+        <a class="waves-effect waves-teal btn-flat btn-sidebar center-align">
+          <strong>Spectate</strong>&nbsp;&nbsp;
+          <i class="material-icons">remove_red_eye</i>
+        </a>
+      </div>
+    </div>
   </ul>
-<!-- SIDENAV END ------------------------------------------------------------>
+  <!-- SIDENAV END ------------------------------------------------------------>
 
   <div class="row" id="dashboard">
     <div class="col l9 m12 s12">
@@ -134,27 +136,27 @@
                   <div class="row">
 
 
-                    <input name="feeling" type="radio" id="mood0" />
+                    <input name="feeling" type="radio" id="mood0" value="very dissatisfied" />
                     <label for="mood0" class="feeling blue lighten-5">
                       <i class="material-icons">sentiment_very_dissatisfied</i>
                     </label>
                     &nbsp;
-                    <input name="feeling" type="radio" id="mood1" />
+                    <input name="feeling" type="radio" id="mood1" value="dissatisfied" />
                     <label for="mood1" class="feeling blue lighten-4">
                       <i class="material-icons">sentiment_dissatisfied</i>
                     </label>
                     &nbsp;
-                    <input name="feeling" type="radio" id="mood2" />
+                    <input name="feeling" type="radio" id="mood2" value="neutral" />
                     <label for="mood2" class="feeling blue lighten-3">
                       <i class="material-icons">sentiment_neutral</i>
                     </label>
                     &nbsp;
-                    <input name="feeling" type="radio" id="mood3" />
+                    <input name="feeling" type="radio" id="mood3" value="satisfied" />
                     <label for="mood3" class="feeling blue lighten-2">
                       <i class="material-icons">sentiment_satisfied</i>
                     </label>
                     &nbsp;
-                    <input name="feeling" type="radio" id="mood4" />
+                    <input name="feeling" type="radio" id="mood4" value="very satisfied" />
                     <label for="mood4" class="feeling blue lighten-1">
                       <i class="material-icons">sentiment_very_satisfied</i>
                     </label>
@@ -177,9 +179,19 @@
             <% for(let i=0; i < journals.length/2; i++) { %>
               <li>
                 <div class="collapsible-header">
-                  <i class="material-icons">mood</i>
-                  <span class="date"> 1/20/18 &nbsp;&nbsp;</span>
-                  <%= journals[i].title %>
+                  <% if(journals[i].feeling == "very dissatisfied") { %>
+                    <i class="material-icons">sentiment_very_dissatisfied</i>
+                    <% } else if (journals[i].feeling == "dissatisfied") { %>
+                      <i class="material-icons">sentiment_dissatisfied</i>
+                      <% } else if (journals[i].feeling == "neutral") { %>
+                        <i class="material-icons">sentiment_neutral</i>
+                        <% } else if (journals[i].feeling == "satisfied") { %>
+                          <i class="material-icons">sentiment_satisfied</i>
+                          <% } else if (journals[i].feeling == "very satisfied") { %>
+                            <i class="material-icons">sentiment_very_satisfied</i>
+                            <% }  %>
+                              <span class="date"> 1/20/18 &nbsp;&nbsp;</span>
+                              <%= journals[i].title %>
                 </div>
                 <div class="collapsible-body">
                   <span>
@@ -220,7 +232,8 @@
 
             <strong>Time Bar</strong>
             <abbr title="You lose time credits when you CHAT; you gain time credits at twice the rate when you SPECTATE.
-This is to encourage people to SPECTATE.">(?)</abbr> <!-- The spacing on this line is intentional. -->
+This is to encourage people to SPECTATE.">(?)</abbr>
+            <!-- The spacing on this line is intentional. -->
             <div class="progress">
               <div class="determinate" style="width: 70%"></div>
             </div>
@@ -253,13 +266,15 @@ This is to encourage people to SPECTATE.">(?)</abbr> <!-- The spacing on this li
         </div>
         <hr class="no-pad-or-marg">
         <div class="section light-blue lighten-4 no-pad-or-marg">
-          <a class="waves-effect waves-teal btn-flat btn-sidebar center-align" href="/chatroom"><strong>CHAT</strong>&nbsp;&nbsp;
+          <a class="waves-effect waves-teal btn-flat btn-sidebar center-align" href="/chatroom">
+            <strong>CHAT</strong>&nbsp;&nbsp;
             <i class="material-icons">question_answer</i>
           </a>
           <!--href="portal/chat"-->
         </div>
         <div class="section light-blue lighten-5 no-pad-or-marg">
-          <a class="waves-effect waves-teal btn-flat btn-sidebar center-align" href="/spectate"><strong>Spectate</strong>&nbsp;&nbsp;
+          <a class="waves-effect waves-teal btn-flat btn-sidebar center-align" href="/spectate">
+            <strong>Spectate</strong>&nbsp;&nbsp;
             <i class="material-icons">remove_red_eye</i>
           </a>
         </div>
