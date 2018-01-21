@@ -44,6 +44,10 @@ socket.on("newMsg", function(msg) {
     classToAdd = "to-user";
   }
 
+  if(msg.from === 'Admin'){
+    classToAdd += ' from-admin';
+  }
+
   msgContainer.innerHTML +=
     '<div class="z-depth-1 chat-messages ' +
     classToAdd +
@@ -52,15 +56,6 @@ socket.on("newMsg", function(msg) {
     "</span><p>" +
     msg.text +
     "</p></div>";
-
-  // msgContainer.innerHTML +=
-  //   '<div class="chat-messages > <span class="username">' +
-  //   params.username +
-  //   "</span><p>" +
-  //   msg.text +
-  //   '</p><p class="timestamp">' +
-  //   formattedTime +
-  //   "</p></div>";
 
   // scroll to the bottom when a new message is sent
   var elem = document.getElementById("chat-wrapper");

@@ -19,7 +19,11 @@
 </head>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.4/socket.io.js"></script>
-
+<script>
+    function clearField(){
+        document.getElementById("chat").value = "";
+    }
+</script>
 <body>
 
     <header class="navbar-fixed">
@@ -55,11 +59,12 @@
                 </button>
             </div>
             <div class="input-field col l10 s6 ">
-                <textarea placeholder="Type a message here... " maxlength="420 " class="materialize-textarea " name="message" id="chat "></textarea>
+                <textarea placeholder="Type a message here... " maxlength="420 " class="materialize-textarea " name="message" id="chat"></textarea>
             </div>
 
             <div class="col l1 s3 ">
-                <button class="btn waves-effect waves-light " type="button " name="button " id="message">
+                <button class="btn waves-effect waves-light " type="submit" name="button " id="message" 
+                        onclick="window.setTimeout(clearField,0);">
                     send
                     <i class="material-icons center ">send</i>
                 </button>
