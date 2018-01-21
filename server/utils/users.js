@@ -7,8 +7,8 @@ class Users {
   constructor() {
     this.users = [];
   }
-  addUser(id, username, room) {
-    const user = { id, username, room };
+  addUser(id, username, room, spectate) {
+    const user = { id, username, room, spectate };
     this.users.push(user);
     return user;
   }
@@ -23,10 +23,14 @@ class Users {
     return this.users.filter(user => user.id === id)[0];
   }
   getUserList(room) {
-    const users = this.users.filter(user => user.room === room);
+    console.log("user", this.users);
+    const users = this.users.filter(
+      user => user.room === room && user.spectate == "false"
+    );
     const namesArray = users.map(user => {
       return user.username;
     });
+    console.log("wtf", users);
     return namesArray;
   }
 

@@ -14,7 +14,7 @@
         media="screen,projection" />
     <link rel="stylesheet" href="/stylesheets/chat.css">
     <!-- FAVICON-->
-    <link rel="shortcut icon" type="image/png" href="/images/favicon.png"/>
+    <link rel="shortcut icon" type="image/png" href="/images/favicon.png" />
     <!--Let browser know website is optimized for mobile-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 </head>
@@ -29,30 +29,38 @@
 </script>
 
 <body>
-  <div class="navbar-fixed">
-    <nav class="nav-extended cyan darken-4">
-      <div class="nav-wrapper container">
-      <a href="#!" class="brand-logo center">FeelSociety</a>
-        <ul class="left mobile-hide">
-          <li><a href="/feedback">Leave Chat Room</a></li>
-        </ul>
-        <ul class="right mobile-hide">
-          <li>Timer: <span class="timer">00:00:00</span></li>
-        </ul>
-        <ul class="right mobile-appear">
-          <li style="visibility: hidden;">X</li>
-        </ul>
-        <div class="nav-content mobile-appear">
-          <ul class="tabs tabs-transparent">
-            <li class="tab"><a href="/feedback">Leave Chat Room</a></li>
-            <li class="tab"></li>
-            <li class="tab"></li>
-            <li class="tab">Timer: <span class="timer">00:00:00</span></li>
-          </ul>
-        </div>
-      </div>
-    </nav>
-  </div>
+    <div class="navbar-fixed">
+        <nav class="nav-extended cyan darken-4">
+            <div class="nav-wrapper container">
+                <a href="#!" class="brand-logo center">FeelSociety</a>
+                <ul class="left mobile-hide">
+                    <li>
+                        <a href="/feedback">Leave Chat Room</a>
+                    </li>
+                </ul>
+                <ul class="right mobile-hide">
+                    <li>Timer:
+                        <span id="timerDiff">00:00:00</span>
+                    </li>
+                </ul>
+                <ul class="right mobile-appear">
+                    <li style="visibility: hidden;">X</li>
+                </ul>
+                <div class="nav-content mobile-appear">
+                    <ul class="tabs tabs-transparent">
+                        <li class="tab">
+                            <a href="/feedback">Leave Chat Room</a>
+                        </li>
+                        <li class="tab"></li>
+                        <li class="tab"></li>
+                        <li class="tab">Timer:
+                            <span id="timer">00:00:00</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </div>
 
     <div id="chat-wrapper">
         <div class="card-panel yellow darken-4">
@@ -67,32 +75,32 @@
 
 
     <form id="message-form">
-      <div class="container">
-        <div class="row cyan accent-3" id="custom-textarea">
+        <div class="container">
+            <div class="row cyan accent-3" id="custom-textarea">
 
 
 
-            <!--
+                <!--
             <div class="input-field col l10 s8 ">
                 <textarea placeholder="Type a message here... " maxlength="76 " class="materialize-textarea" name="message" id="chat"></textarea>
             </div>-->
 
-            <div class="input-field col l10 s8">
-              <input placeholder="Type a message here..." maxlength="76" name="message" id="chat" type="text">
+                <div class="input-field col l10 s8">
+                    <input placeholder="Type a message here..." maxlength="76" name="message" id="chat" type="text">
+                </div>
+
+                <div class="col l2 s4 ">
+                    <button class="btn waves-effect waves-light " type="submit" name="button " id="message" onclick="window.setTimeout(clearField,0);">
+                        send
+                        <i class="material-icons right">send</i>
+                    </button>
+                </div>
+
+
+
+
             </div>
-
-            <div class="col l2 s4 ">
-              <button class="btn waves-effect waves-light " type="submit" name="button " id="message" onclick="window.setTimeout(clearField,0);">
-                send
-                <i class="material-icons right">send</i>
-              </button>
-            </div>
-
-
-
-
         </div>
-      </div>
     </form>
 
 

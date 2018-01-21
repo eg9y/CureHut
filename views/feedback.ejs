@@ -6,6 +6,8 @@
   <title>Feedback</title>
   <!--Import Google Icon Font-->
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <!-- FAVICON-->
+  <link rel="shortcut icon" type="image/png" href="/images/favicon.png" />
   <!--Import materialize.css-->
   <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-alpha.3/css/materialize.min.css"
     media="screen,projection" />
@@ -41,11 +43,13 @@
               <li>
                 <a href="/auth/logout">Logout</a>
               </li>
-            <% } else { %>
-              <li>
-                <a href="/auth/google">Login with <i class="fa fa-google-plus" aria-hidden="true"></i> </a>
-              </li>
-            <% } %>
+              <% } else { %>
+                <li>
+                  <a href="/auth/google">Login with
+                    <i class="fa fa-google-plus" aria-hidden="true"></i>
+                  </a>
+                </li>
+                <% } %>
           </ul>
         </div>
       </div>
@@ -60,11 +64,11 @@
       <li>
         <a href="/auth/logout">Logout</a>
       </li>
-    <% } else { %>
-      <li>
-        <a href="/auth/google">Google+ Login</a>
-      </li>
-    <% } %>
+      <% } else { %>
+        <li>
+          <a href="/auth/google">Google+ Login</a>
+        </li>
+        <% } %>
   </ul>
 
   <h1 class="center-align"> What did you think about that chat? </h1>
@@ -75,30 +79,36 @@
     </h3>
     < } %> -->
 
-      <div class="container">
-        <div class="row">
-          <div class="col m4 s12">
-            <i class="large material-icons">mood</i>
-            <h2> Friendly </h2>
-            <p> This was a pleasant conversation. </p>
-            <button class="waves-effect waves-light btn-large">Commend</button>
-          </div>
-          <div class="col m4 s12">
-            <i class="large material-icons">lightbulb_outline</i>
-            <h2> Insightful </h2>
-            <p> This conversation changed my outlook on life. </p>
-            <button class="waves-effect waves-light btn-large">Commend</button>
-          </div>
-          <div class="col m4 s12" id="report-column">
-            <i class="large material-icons">thumb_down</i>
-            <h2> Inappropriate </h2>
-            <p> This conversation was inappropriate or rude. </p>
-            <button class="waves-effect waves-light btn-large">Report</button>
+  <form action="/feedback" method="post">
+    <div class="container">
+      <div class="row">
+        <% for(let x = 0; x < userList.length; x++) { %>
+          <% if(user.username !== userList[x]) { %>
+            <input type="hidden" name="username" value=<%=userList[x]%>>
+            <div class="col m4 s12">
+              <i class="large material-icons">mood</i>
+              <h2> Friendly </h2>
+              <p> This was a pleasant conversation. </p>
+              <input class="waves-effect waves-light btn-large" type="submit" name="commend" value="Friendly">
+            </div>
+            <div class="col m4 s12">
+              <i class="large material-icons">lightbulb_outline</i>
+              <h2> Insightful </h2>
+              <p> This conversation changed my outlook on life. </p>
+              <input class="waves-effect waves-light btn-large" type="submit" name="commend" value="Insightful">
+            </div>
+            <div class="col m4 s12" id="report-column">
+              <i class="large material-icons">thumb_down</i>
+              <h2> Inappropriate </h2>
+              <p> This conversation was inappropriate or rude. </p>
+              <input class="waves-effect waves-light btn-large" type="submit" name="report" value="Inappropriate">
+            </div>
+            <%} %>
+              <% } %>
+      </div>
+    </div>
 
-          </div>
-        </div>
-
-        <!-- <div class="row">
+    <!-- <div class="row">
         <div class="col m4">
           <i class="large material-icons">mood</i>
         </div>
@@ -109,53 +119,21 @@
           <i class="large material-icons">thumb_down</i>
         </div>
       </div> -->
-      </div>
+    </div>
 
 
-      <div class="section cyan accent-3">
-        <div class="container">
-          <h5>About Us</h5>
-          <div class="row">
-            <div class="col s6">
-              <h6>
-                <strong>The Project</strong>
-              </h6>
-              <p>This website was made for CruzHacks2018!</p>
-            </div>
-            <div class="col s6">
-              <div class="row">
-                <div class="col s3">
-                  <h6>
-                    <strong>The Team</strong>
-                  </h6>
-                  <ul>
-                    <li>Egan</li>
-                    <li>Sanjay</li>
-                    <li>Joseph</li>
-                  </ul>
-                </div>
-                <div class="col s9">
-                  <h6>&nbsp;</h6>
-                  <ul>
-                    <li>Egan</li>
-                    <li>Sanjay</li>
-                    <li>Joseph</li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!--Import jQuery before materialize.js-->
-      <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-alpha.3/js/materialize.min.js"></script>
-      <script>
-        $(document).ready(function () {
-          $('.sidenav').sidenav();
-          $('.scrollspy').scrollSpy();
-        });
-      </script>
+    <div class="section cyan accent-3">
+
+    </div>
+    <!--Import jQuery before materialize.js-->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-alpha.3/js/materialize.min.js"></script>
+    <script>
+      $(document).ready(function () {
+        $('.sidenav').sidenav();
+        $('.scrollspy').scrollSpy();
+      });
+    </script>
 </body>
 
 </html>
