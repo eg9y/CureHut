@@ -128,18 +128,17 @@
 
         <div class="section">
           <h5>Journal History</h5>
-          <table>
-            <% for(let i=0; i < journals.length; i++) { %>
-              <tr>
-                <td>
-                  <%= journals[i].title %>
-                </td>
-                <td>
-                  <%= journals[i].entry %>
-                </td>
-              </tr>
-              <% } %>
-          </table>
+          <br>
+          <ul class="collapsible" data-collapsible="accordion">
+            <% for(let i=0; i < journals.length/2; i++) { %>
+            <li>
+              <div class="collapsible-header">
+                <i class="material-icons">mood</i><span class="date"> 1/20/18 &nbsp;&nbsp;</span><%= journals[i].title %>
+              </div>
+              <div class="collapsible-body"><span><%= journals[i].entry %></span></div>
+            </li>
+            <% } %>
+          </ul>
         </div>
 
         <!-- FLOATING BUTTON IN BOT-LEFT-->
@@ -170,7 +169,7 @@
           <div class="container">
 
             Time Bar
-            <abbr title="Info">(?)</abbr>
+            <abbr title="You lose time credits when you CHAT; you gain time credits at twice the rate when you SPECTATE.">(?)</abbr>
             <div class="progress">
               <div class="determinate" style="width: 70%"></div>
             </div>
@@ -182,7 +181,7 @@
           <div class="container">
 
             Commends
-            <abbr title="Info">(?)</abbr>
+            <abbr title="Commends are rewarded to users by other users after they CHAT.">(?)</abbr>
             <p class="p-sidebar">
               <i class="material-icons">mood</i> #&nbsp;&nbsp;&nbsp;&nbsp;
               <i class="material-icons">lightbulb_outline</i> #
@@ -194,7 +193,7 @@
           <div class="container">
 
             Streaks
-            <abbr title="Info">(?)</abbr>
+            <abbr title="Writing a journal entry DAILY will increase you STREAK.">(?)</abbr>
             <p class="p-sidebar">
               # Days
             </p>
@@ -233,6 +232,7 @@
       $(document).ready(function () {
         $('.sidenav').sidenav();
         $('.scrollspy').scrollSpy();
+        $('.collapsible').collapsible();
       });
     </script>
 </body>

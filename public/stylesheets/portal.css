@@ -45,3 +45,9 @@ span {
 #dashboard {
 	padding-top: 20px;
 }
+.history_header {
+	width: 85%;
+}
+.date {
+	font-style: normal;
+}
