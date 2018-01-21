@@ -13,10 +13,13 @@
 .btn-sidebar {
 	width: 100%;
 	height: 79px;
-	padding: 20px 0;
+	padding: 20px;
 }
 #dash_sidebar {
 	width: 250px;
+}
+#dash_sidebar_sidebar {
+	width: 300px;
 }
 .text-siderbar {
 	height: 100px;
@@ -50,4 +53,7 @@ span {
 }
 .date {
 	font-style: normal;
+}
+@media only screen and (max-width: 992px) {
+   .mobile-hide{ display: none !important; }
 }
