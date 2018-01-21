@@ -35,6 +35,11 @@ const userSchema = new Schema({
     type: Number,
     default: 60,
     required: true
+  },
+  spectating: {
+    type: Boolean,
+    required: true,
+    default: false
   }
 });
 
