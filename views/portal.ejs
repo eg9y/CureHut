@@ -27,24 +27,12 @@
             <i class="material-icons">menu</i>
           </a>
           <ul class="right hide-on-med-and-down">
-            <% if (user) { %>
-              <li>
-                <a href="#">Home</a>
-              </li>
-              <li>
-                <a href="/dashboard">Dashboard</a>
-              </li>
-              <li>
-                <a href="/auth/logout">Logout</a>
-              </li>
-              <% } else { %>
-                <li>
-                  <a href="/auth/login">Login</a>
-                </li>
-                <li>
-                  <a href="/auth/login">Sign Up</a>
-                </li>
-                <% } %>
+            <li>
+              <a href="/">Home</a>
+            </li>
+            <li>
+              <a href="/auth/logout">Logout</a>
+            </li>
           </ul>
         </div>
       </div>
