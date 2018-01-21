@@ -48,13 +48,29 @@ app.get("/", (req, res) => {
 });
 
 app.use("/auth", authRouter);
-app.use("/portal", dashboardRouter);
 app.use("/profile", profileRouter);
+app.use("/portal", dashboardRouter);
+
+const authCheck = (req, res, next) => {
+  if (!req.user) {
+    return res.redirect("/auth/login");
+  }
+  next();
+};
 
 //////////////////////////////////////////////////////////////////////
 const { generateMsg } = require("./server/utils/message.js");
 const { isRealString } = require("./server/utils/validation.js");
 const { Users } = require("./server/utils/users.js");
+
+app.get("/chatroom", authCheck, (req, res) => {
+  console.log("HOLLAAAAA", users.getRoomList());
+  res.render("chatroom", {
+    username: req.user.username,
+    roomList: users.getRoomList(),
+    spectate: false
+  });
+});
 
 const http = require("http");
 const socketIO = require("socket.io");
@@ -64,17 +80,14 @@ const io = socketIO(server);
 let users = new Users();
 
 io.on("connection", socket => {
-  console.log("new user connected");
-
   socket.on("join", (params, callback) => {
     if (!isRealString(params.room)) {
       return callback("Room is required");
     }
-    console.log(users.getRoomList());
     socket.join(params.room);
     users.removeUser(socket.id);
-    console.log(params);
     users.addUser(socket.id, params.username, params.room);
+    console.log("new user connected. Room: ", users.getRoomList());
 
     io.to(params.room).emit("updateUserList", users.getUserList(params.room));
     socket.emit(
