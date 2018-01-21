@@ -20,11 +20,13 @@
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.4/socket.io.js"></script>
 <script>
-    function clearField(){
+    function clearField() {
         document.getElementById("chat").value = "";
     }
 </script>
+
 <body>
+    <h3 id="timer">10</h3>
 
     <header class="navbar-fixed">
         <nav>
@@ -63,14 +65,15 @@
             </div>
 
             <div class="col l1 s3 ">
-                <button class="btn waves-effect waves-light " type="submit" name="button " id="message" 
-                        onclick="window.setTimeout(clearField,0);">
+                <button class="btn waves-effect waves-light " type="submit" name="button " id="message" onclick="window.setTimeout(clearField,0);">
                     send
                     <i class="material-icons center ">send</i>
                 </button>
             </div>
         </div>
     </form>
+
+    <a href="/feedback">Exitsss</a>
 
     <!--Import jQuery before materialize.js-->
     <script type="text/javascript " src="https://code.jquery.com/jquery-3.2.1.min.js "></script>
