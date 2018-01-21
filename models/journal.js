@@ -9,6 +9,10 @@ const journalSchema = new Schema({
   entry: {
     type: String,
     required: true
+  },
+  feeling: {
+    type: String,
+    required: true
   }
 });
 

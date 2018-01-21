@@ -7,7 +7,6 @@ require("dotenv").config();
 const app = express();
 const authRouter = require("./routes/auth-routes");
 const dashboardRouter = require("./routes/dashboard-routes");
-const profileRouter = require("./routes/profile-routes");
 
 //will run passport.use later on so "google" strategy will be defined
 const passportSetup = require("./config/passport-setup");
@@ -48,7 +47,6 @@ app.get("/", (req, res) => {
 });
 
 app.use("/auth", authRouter);
-app.use("/profile", profileRouter);
 app.use("/portal", dashboardRouter);
 
 const authCheck = (req, res, next) => {
