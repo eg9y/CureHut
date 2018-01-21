@@ -62,9 +62,9 @@
           <strong>Time Bar</strong>
           <abbr title="You lose time credits when you CHAT; you gain time credits at twice the rate when you SPECTATE.">(?)</abbr>
           <div class="progress">
-            <div class="determinate" style="width: 70%"></div>
+            <div class="determinate" style="width: <%= Math.min(100, (63 / 60)*100) %>%"></div>
           </div>
-          <span>63</span> CHAT Minutes
+          <span>user.time</span>63 CHAT Minutes
 
         </div>
       </div>
@@ -236,10 +236,10 @@
 This is to encourage people to SPECTATE.">(?)</abbr>
             <!-- The spacing on this line is intentional. -->
             <div class="progress">
-              <div class="determinate" style="width: <%=(user.time / 60)*100%>"></div>
+              <div class="determinate" style="width: <%= Math.min(100, (63 / 60)*100) %>%"></div>
             </div>
             <span>
-              <%=user.time%>
+              <%= user.time%>63&nbsp; 
             </span> CHAT Minutes
 
           </div>
