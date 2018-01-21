@@ -137,3 +137,14 @@ $("#message-form").on("submit", e => {
     () => {}
   );
 });
+
+$("#leave").click(() => {
+  socket.emit(
+    "createMsg",
+    {
+      from: "Admin",
+      text: "A User has quit"
+    },
+    () => {}
+  );
+});
