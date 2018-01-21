@@ -2,6 +2,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 const cookieSession = require("cookie-session");
 const passport = require("passport");
+require("dotenv").config();
 
 const app = express();
 const authRouter = require("./routes/auth-routes");
@@ -122,6 +123,6 @@ io.on("connection", socket => {
   });
 });
 
-server.listen(3000, () => {
+server.listen(process.env.PORT, () => {
   console.log("Listening to port 3000");
 });
