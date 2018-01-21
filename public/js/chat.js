@@ -113,11 +113,9 @@ socket.on("newMsg", function(msg) {
   msgContainer.innerHTML +=
     '<div class="z-depth-1 chat-messages ' +
     classToAdd +
-    '"> <span class="timestamp">' +
-    formattedTime +
-    "</span><p>" +
-    msg.text +
-    "</p></div>";
+    '"> <span class="username">' +  msg.from 
+    + ' @ </span> <span class="timestamp">' + formattedTime 
+    + "</span><p>" + msg.text + "</p></div>";
 
   // scroll to the bottom when a new message is sent
   var elem = document.getElementById("chat-wrapper");

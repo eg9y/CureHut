@@ -24,8 +24,10 @@
       <div class="nav-wrapper cyan darken-4">
         <div class="container">
           <a href="/" class="brand-logo">FeelSociety</a>
+          <% if (user) { %>
           <a href="#" data-target="mobile" class="sidenav-trigger">
             <i class="material-icons">menu</i>
+          <% } %>
           </a>
           <ul class="right hide-on-med-and-down">
             <% if (user) { %>
@@ -35,6 +37,7 @@
               <li>
                 <a href="/auth/logout">Logout</a>
               </li>
+            </ul>
             <% } else { %>
               <li>
                 <a href="/auth/google">Login with <i class="fa fa-google-plus" aria-hidden="true"></i> </a>

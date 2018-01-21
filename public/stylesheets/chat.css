@@ -10,7 +10,7 @@ a {
   margin: 0 auto;
 }
 form #message-form {
-  height: 0 !important;
+  display: none !important;
 }
 /*targets chatbar*/
 form {
@@ -56,6 +56,7 @@ form {
      padding-top: 40px;
    }
 }
+
 .nav-content{
   display: none;
 }
@@ -129,9 +130,9 @@ a {
   border-right-color: black !important;
 }
 
-.from-admin .timestamp:after {
+/*.from-admin .timestamp:after {
   content: " - Admin Message";
-}
+}*/
 
 /*target messages send by other users*/
 /*TODO: untested, there are values that may need to be tweaked*/
