@@ -45,10 +45,8 @@ const startTheTimer = () => {
         newMin = minTime.toString().length == 1 ? "0" + minTime : minTime,
         newHour = hourTime.toString().length == 1 ? "0" + hourTime : hourTime;
 
-      if (document.getElementById("timer")) {
-        document.getElementById("timer").innerHTML =
-          newHour + ":" + newMin + ":" + newSec;
-      }
+      document.getElementByClass("timer").innerHTML =
+        newHour + ":" + newMin + ":" + newSec;
 
       secTime++;
     }, 1000);

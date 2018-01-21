@@ -29,22 +29,31 @@
 </script>
 
 <body>
-    <div id="timer">00:00:00</div>
+  <div class="navbar-fixed">
+    <nav class="nav-extended cyan darken-4">
+      <div class="nav-wrapper container">
+      <a href="#!" class="brand-logo center">FeelSociety</a>
+        <ul class="left mobile-hide">
+          <li><a href="/feedback">Leave Chat Room</a></li>
+        </ul>
+        <ul class="right mobile-hide">
+          <li>Timer: <span class="timer">00:00:00</span></li>
+        </ul>
+        <ul class="right mobile-appear">
+          <li style="visibility: hidden;">X</li>
+        </ul>
+        <div class="nav-content mobile-appear">
+          <ul class="tabs tabs-transparent">
+            <li class="tab"><a href="/feedback">Leave Chat Room</a></li>
+            <li class="tab"></li>
+            <li class="tab"></li>
+            <li class="tab">Timer: <span class="timer">00:00:00</span></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </div>
 
-    <header class="navbar-fixed">
-        <nav>
-            <div class="nav-wrapper cyan darken-4">
-                <div class="container">
-                    <span href="#" class="brand-logo center">Logo</span>
-                    <a href="#" data-target="mobile" class="sidenav-trigger">
-                        <i class="material-icons">menu</i>
-                    </a>
-                </div>
-            </div>
-        </nav>
-    </header>
-
-    <h1> Chatroom </h1>
     <div id="chat-wrapper">
         <div class="card-panel yellow darken-4">
             <span class="white-text">
@@ -55,26 +64,38 @@
         <div id="message-container"></div>
     </div>
     <!-- form for sending messages to chat -->
+
+
     <form id="message-form">
-        <div class="row">
-            <div class="col l1 s3">
-                <button class="btn waves-effect waves-light" type="button" name="button" id="leave">
-                    <a href="/feedback">quit</a>
-                    <i class="material-icons center ">close</i>
-                </button>
-            </div>
-            <div class="input-field col l10 s6 ">
-                <textarea placeholder="Type a message here... " maxlength="420 " class="materialize-textarea " name="message" id="chat"></textarea>
+      <div class="container">
+        <div class="row cyan accent-3" id="custom-textarea">
+
+
+
+            <!--
+            <div class="input-field col l10 s8 ">
+                <textarea placeholder="Type a message here... " maxlength="76 " class="materialize-textarea" name="message" id="chat"></textarea>
+            </div>-->
+
+            <div class="input-field col l10 s8">
+              <input placeholder="Type a message here..." maxlength="76" name="message" id="chat" type="text">
             </div>
 
-            <div class="col l1 s3 ">
-                <button class="btn waves-effect waves-light " type="submit" name="button " id="message" onclick="window.setTimeout(clearField,0);">
-                    send
-                    <i class="material-icons center ">send</i>
-                </button>
+            <div class="col l2 s4 ">
+              <button class="btn waves-effect waves-light " type="submit" name="button " id="message" onclick="window.setTimeout(clearField,0);">
+                send
+                <i class="material-icons right">send</i>
+              </button>
             </div>
+
+
+
+
         </div>
+      </div>
     </form>
+
+
     <!--Import jQuery before materialize.js-->
     <script type="text/javascript " src="https://code.jquery.com/jquery-3.2.1.min.js "></script>
     <script type="text/javascript " src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-alpha.3/js/materialize.min.js "></script>

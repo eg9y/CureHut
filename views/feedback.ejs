@@ -3,27 +3,27 @@
 
 <head>
   <meta charset="utf-8">
-  <title>Feedback | FeelSociety</title>
+  <title>Feedback</title>
   <!--Import Google Icon Font-->
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <!-- FAVICON-->
-  <link rel="shortcut icon" type="image/png" href="/images/favicon.png" />
-  <!--Import materialize.css-->
-  <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-alpha.3/css/materialize.min.css"
-    media="screen,projection" />
-  <link rel="stylesheet" href="/stylesheets/feedback.css">
+  <<<<<<< HEAD <!-- FAVICON-->
+    <link rel="shortcut icon" type="image/png" href="/images/favicon.png" /> ======= >>>>>>> 911d9360fc56b05177a7499b26bcfad2242dcaa9
+    <!--Import materialize.css-->
+    <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-alpha.3/css/materialize.min.css"
+      media="screen,projection" />
+    <link rel="stylesheet" href="/stylesheets/feedback.css">
 
-  <style>
-    .col {
-      text-align: center;
-    }
+    <style>
+      .col {
+        text-align: center;
+      }
 
-    #report-column {
-      border-left: 2px solid black;
-    }
-  </style>
-  <!--Let browser know website is optimized for mobile-->
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      #report-column {
+        border-left: 2px solid black;
+      }
+    </style>
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 </head>
 
 <body>
@@ -31,15 +31,12 @@
     <nav>
       <div class="nav-wrapper cyan darken-4">
         <div class="container">
-          <a href="/" class="brand-logo">Logo</a>
+          <a href="/" class="brand-logo">FeelSociety</a>
           <a href="#" data-target="mobile" class="sidenav-trigger">
             <i class="material-icons">menu</i>
           </a>
           <ul class="right hide-on-med-and-down">
             <% if (user) { %>
-              <li>
-                <a href="#">Home</a>
-              </li>
               <li>
                 <a href="/portal">Dashboard</a>
               </li>
@@ -48,10 +45,9 @@
               </li>
               <% } else { %>
                 <li>
-                  <a href="/auth/login">Login</a>
-                </li>
-                <li>
-                  <a href="/auth/login">Sign Up</a>
+                  <a href="/auth/google">Login with
+                    <i class="fa fa-google-plus" aria-hidden="true"></i>
+                  </a>
                 </li>
                 <% } %>
           </ul>
@@ -63,114 +59,120 @@
   <ul class="sidenav" id="mobile">
     <% if (user) { %>
       <li>
-        <a href="">
-          <%=user.username %>
-        </a>
-      </li>
-      <li>
-        <a href="#">Home</a>
-      </li>
-      <li>
-        <a href="/dashboard">Dashboard</a>
+        <a href="/portal">Dashboard</a>
       </li>
       <li>
         <a href="/auth/logout">Logout</a>
       </li>
       <% } else { %>
         <li>
-          <a href="/auth/login">Login</a>
-        </li>
-        <li>
-          <a href="/auth/login">Sign Up</a>
+          <a href="/auth/google">Google+ Login</a>
         </li>
         <% } %>
   </ul>
 
   <h1 class="center-align"> What did you think about that chat? </h1>
 
-  <% for(let x = 0; x < userList.length; x++) { %>
+  <!-- < for(let x = 0; x !=== undefined && x < userList.length; x++) { %>
     <h3>
-      <%=userList[x] %>
+      <=userList[x] %>
     </h3>
-    <% } %>
+    < } %> -->
 
-      <form action="/feedback" method="post">
-        <div class="container">
-          <div class="row">
-            <% for(let x = 0; x < userList.length; x++) { %>
-              <% if(user.username !== userList[x]) { %>
-                <input type="hidden" name="username" value=<%=userList[x]%>>
-                <div class="col m4 s12">
-                  <i class="large material-icons">mood</i>
-                  <h2> Friendly </h2>
-                  <p> This was a pleasant conversation. </p>
-                  <input class="waves-effect waves-light btn-large" type="submit" name="commend" value="Friendly">
-                </div>
-                <div class="col m4 s12">
-                  <i class="large material-icons">lightbulb_outline</i>
-                  <h2> Insightful </h2>
-                  <p> This conversation changed my outlook on life. </p>
-                  <input class="waves-effect waves-light btn-large" type="submit" name="commend" value="Insightful">
-                </div>
-                <div class="col m4 s12" id="report-column">
-                  <i class="large material-icons">thumb_down</i>
-                  <h2> Inappropriate </h2>
-                  <p> This conversation was inappropriate or rude. </p>
-                  <input class="waves-effect waves-light btn-large" type="submit" name="report" value="Inappropriate">
-                </div>
-                <%} %>
-                  <% } %>
-          </div>
-
-
-      </form>
-      </div>
-
-
-      <div class="section cyan accent-3">
-        <div class="container">
-          <h5>About Us</h5>
-          <div class="row">
-            <div class="col s6">
-              <h6>
-                <strong>The Project</strong>
-              </h6>
-              <p>This website was made for CruzHacks2018!</p>
+  <form action="/feedback" method="post">
+    <div class="container">
+      <div class="row">
+        <% for(let x = 0; x < userList.length; x++) { %>
+          <% if(user.username !== userList[x]) { %>
+            <input type="hidden" name="username" value=<%=userList[x]%>>
+            <div class="col m4 s12">
+              <i class="large material-icons">mood</i>
+              <h2> Friendly </h2>
+              <p> This was a pleasant conversation. </p>
+              <input class="waves-effect waves-light btn-large" type="submit" name="commend" value="Friendly">
             </div>
-            <div class="col s6">
-              <div class="row">
-                <div class="col s3">
-                  <h6>
-                    <strong>The Team</strong>
-                  </h6>
-                  <ul>
-                    <li>Egan</li>
-                    <li>Sanjay</li>
-                    <li>Joseph</li>
-                  </ul>
-                </div>
-                <div class="col s9">
-                  <h6>&nbsp;</h6>
-                  <ul>
-                    <li>Egan</li>
-                    <li>Sanjay</li>
-                    <li>Joseph</li>
-                  </ul>
-                </div>
+            <div class="col m4 s12">
+              <i class="large material-icons">lightbulb_outline</i>
+              <h2> Insightful </h2>
+              <p> This conversation changed my outlook on life. </p>
+              <input class="waves-effect waves-light btn-large" type="submit" name="commend" value="Insightful">
+            </div>
+            <div class="col m4 s12" id="report-column">
+              <i class="large material-icons">thumb_down</i>
+              <h2> Inappropriate </h2>
+              <p> This conversation was inappropriate or rude. </p>
+              <input class="waves-effect waves-light btn-large" type="submit" name="report" value="Inappropriate">
+            </div>
+            <%} %>
+              <% } %>
+      </div>
+      <div class="col m4 s12" id="report-column">
+        <i class="large material-icons">thumb_down</i>
+        <h2> Inappropriate </h2>
+        <p> This conversation was inappropriate or rude. </p>
+        <button class="waves-effect waves-light btn-large">Report</button>
+
+      </div>
+    </div>
+
+    <!-- <div class="row">
+        <div class="col m4">
+          <i class="large material-icons">mood</i>
+        </div>
+        <div class="col m4">
+          <i class="large material-icons">lightbulb_outline</i>
+        </div>
+        <div class="col m4">
+          <i class="large material-icons">thumb_down</i>
+        </div>
+      </div> -->
+    </div>
+
+
+    <div class="section cyan accent-3">
+      <div class="container">
+        <h5>About Us</h5>
+        <div class="row">
+          <div class="col s6">
+            <h6>
+              <strong>The Project</strong>
+            </h6>
+            <p>This website was made for CruzHacks2018!</p>
+          </div>
+          <div class="col s6">
+            <div class="row">
+              <div class="col s3">
+                <h6>
+                  <strong>The Team</strong>
+                </h6>
+                <ul>
+                  <li>Egan</li>
+                  <li>Sanjay</li>
+                  <li>Joseph</li>
+                </ul>
+              </div>
+              <div class="col s9">
+                <h6>&nbsp;</h6>
+                <ul>
+                  <li>Egan</li>
+                  <li>Sanjay</li>
+                  <li>Joseph</li>
+                </ul>
               </div>
             </div>
           </div>
         </div>
       </div>
-      <!--Import jQuery before materialize.js-->
-      <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-alpha.3/js/materialize.min.js"></script>
-      <script>
-        $(document).ready(function () {
-          $('.sidenav').sidenav();
-          $('.scrollspy').scrollSpy();
-        });
-      </script>
+    </div>
+    <!--Import jQuery before materialize.js-->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-alpha.3/js/materialize.min.js"></script>
+    <script>
+      $(document).ready(function () {
+        $('.sidenav').sidenav();
+        $('.scrollspy').scrollSpy();
+      });
+    </script>
 </body>
 
 </html>

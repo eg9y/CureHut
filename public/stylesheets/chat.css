@@ -6,36 +6,69 @@ h1 {
 a {
   color: white;
 }
-
+.container {
+  margin: 0 auto;
+}
+form #message-form {
+  height: 0 !important;
+}
 /*targets chatbar*/
 form {
   position: fixed;
-  bottom: 0px;
+  width: 100%;
+
+  /*bottom: 0px;
   left: 0px;
   right: 0px;
   width: 100%;
   height: 150px;
   z-index: 99;
   background-color: #00acc1; /*cyan darken-1*/
-  outline: none;
+  /*outline: none;
   border-top: 10px solid #006064; /*cyan darken-4*/
 }
 
 /*targets textarea*/
-#chat {
-  resize: none;
-  height: 100px;
-  color: white;
+::placeholder {
+  color: #525c66;
 }
-
+#chat {
+  /*resize: none;*/
+  color: black;
+}
+#custom-textarea {
+  border-radius: 10px;
+  margin: 0;
+  position: relative;
+  top: 2px;
+  height: 70px;
+}
+.input-field {
+  height: inherit !important;
+}
+@media only screen and (max-width: 570px) {
+   .mobile-hide{ display: none !important; }
+   .mobile-appear{ display: block !important; }
+   .nav-extended {
+     height: 100px !important;
+   }
+   #chat-wrapper {
+     padding-top: 40px;
+   }
+}
+.nav-content{
+  display: none;
+}
+a {
+  color: white !important;
+}
 /* send message and leave chat buttons */
-#message,
-#leave {
+#message {
   position: relative;
   right: 0px;
   bottom: 0px;
-  top: 25px;
-  height: 100px;
+  top: 17px;
+  /*height: 100px;*/
 }
 
 /*style for username string*/
@@ -44,12 +77,6 @@ form {
   left: 5px;
   font-style: italic;
   font-size: 10px;
-}
-
-/*target message-retainers (thing between message-container and the messages)*/
-.message-retainer {
-  width: 100%;
-  border-color: 5px solid pink;
 }
 
 /*target all messages*/
@@ -113,7 +140,7 @@ form {
   padding: 5px;
   position: relative;
   left: 15px;
-  background: green;
+  background: #8bc34a;
   margin-right: 100%;
   /*border-radius: .4em;*/
 }
@@ -126,7 +153,7 @@ form {
   width: 0;
   height: 0;
   border: 20px solid transparent;
-  border-right-color: green;
+  border-right-color: #8bc34a;
   border-left: 0;
   border-bottom: 0;
   margin-top: -10px;
@@ -141,6 +168,7 @@ form {
   overflow-x: hidden;
   overflow-y: auto;
   margin: auto;
+  padding-bottom: 0px;
 }
 
 #message-container {
