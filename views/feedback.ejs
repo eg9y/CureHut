@@ -3,11 +3,9 @@
 
 <head>
   <meta charset="utf-8">
-  <title>Feedback | FeelSociety</title>
+  <title>Feedback</title>
   <!--Import Google Icon Font-->
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <!-- FAVICON-->
-  <link rel="shortcut icon" type="image/png" href="/images/favicon.png"/>
   <!--Import materialize.css-->
   <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-alpha.3/css/materialize.min.css"
     media="screen,projection" />
@@ -31,29 +29,23 @@
     <nav>
       <div class="nav-wrapper cyan darken-4">
         <div class="container">
-          <a href="/" class="brand-logo">Logo</a>
+          <a href="/" class="brand-logo">FeelSociety</a>
           <a href="#" data-target="mobile" class="sidenav-trigger">
             <i class="material-icons">menu</i>
           </a>
           <ul class="right hide-on-med-and-down">
             <% if (user) { %>
               <li>
-                <a href="#">Home</a>
-              </li>
-              <li>
                 <a href="/portal">Dashboard</a>
               </li>
               <li>
                 <a href="/auth/logout">Logout</a>
               </li>
-              <% } else { %>
-                <li>
-                  <a href="/auth/login">Login</a>
-                </li>
-                <li>
-                  <a href="/auth/login">Sign Up</a>
-                </li>
-                <% } %>
+            <% } else { %>
+              <li>
+                <a href="/auth/google">Login with <i class="fa fa-google-plus" aria-hidden="true"></i> </a>
+              </li>
+            <% } %>
           </ul>
         </div>
       </div>
@@ -63,67 +55,60 @@
   <ul class="sidenav" id="mobile">
     <% if (user) { %>
       <li>
-        <a href="">
-          <%=user.username %>
-        </a>
-      </li>
-      <li>
-        <a href="#">Home</a>
-      </li>
-      <li>
-        <a href="/dashboard">Dashboard</a>
+        <a href="/portal">Dashboard</a>
       </li>
       <li>
         <a href="/auth/logout">Logout</a>
       </li>
-      <% } else { %>
-        <li>
-          <a href="/auth/login">Login</a>
-        </li>
-        <li>
-          <a href="/auth/login">Sign Up</a>
-        </li>
-        <% } %>
+    <% } else { %>
+      <li>
+        <a href="/auth/google">Google+ Login</a>
+      </li>
+    <% } %>
   </ul>
 
   <h1 class="center-align"> What did you think about that chat? </h1>
 
-  <% for(let x = 0; x < userList.length; x++) { %>
+  <!-- < for(let x = 0; x !=== undefined && x < userList.length; x++) { %>
     <h3>
-      <%=userList[x] %>
+      <=userList[x] %>
     </h3>
-    <% } %>
+    < } %> -->
 
-      <form action="/feedback" method="post">
-        <div class="container">
-          <div class="row">
-            <% for(let x = 0; x < userList.length; x++) { %>
-              <% if(user.username !== userList[x]) { %>
-                <input type="hidden" name="username" value=<%=userList[x]%>>
-                <div class="col m4 s12">
-                  <i class="large material-icons">mood</i>
-                  <h2> Friendly </h2>
-                  <p> This was a pleasant conversation. </p>
-                  <input class="waves-effect waves-light btn-large" type="submit" name="commend" value="Friendly">
-                </div>
-                <div class="col m4 s12">
-                  <i class="large material-icons">lightbulb_outline</i>
-                  <h2> Insightful </h2>
-                  <p> This conversation changed my outlook on life. </p>
-                  <input class="waves-effect waves-light btn-large" type="submit" name="commend" value="Insightful">
-                </div>
-                <div class="col m4 s12" id="report-column">
-                  <i class="large material-icons">thumb_down</i>
-                  <h2> Inappropriate </h2>
-                  <p> This conversation was inappropriate or rude. </p>
-                  <input class="waves-effect waves-light btn-large" type="submit" name="report" value="Inappropriate">
-                </div>
-                <% } %>
-                  <% } %>
+      <div class="container">
+        <div class="row">
+          <div class="col m4 s12">
+            <i class="large material-icons">mood</i>
+            <h2> Friendly </h2>
+            <p> This was a pleasant conversation. </p>
+            <button class="waves-effect waves-light btn-large">Commend</button>
           </div>
+          <div class="col m4 s12">
+            <i class="large material-icons">lightbulb_outline</i>
+            <h2> Insightful </h2>
+            <p> This conversation changed my outlook on life. </p>
+            <button class="waves-effect waves-light btn-large">Commend</button>
+          </div>
+          <div class="col m4 s12" id="report-column">
+            <i class="large material-icons">thumb_down</i>
+            <h2> Inappropriate </h2>
+            <p> This conversation was inappropriate or rude. </p>
+            <button class="waves-effect waves-light btn-large">Report</button>
 
+          </div>
+        </div>
 
-      </form>
+        <!-- <div class="row">
+        <div class="col m4">
+          <i class="large material-icons">mood</i>
+        </div>
+        <div class="col m4">
+          <i class="large material-icons">lightbulb_outline</i>
+        </div>
+        <div class="col m4">
+          <i class="large material-icons">thumb_down</i>
+        </div>
+      </div> -->
       </div>
 
 
