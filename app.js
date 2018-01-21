@@ -93,7 +93,7 @@ app.get("/feedback", authCheck, (req, res) => {
     } else {
       user.time -= 10;
     }
-    return user.save();
+    user.save();
   });
   res.render("feedback", {
     user: req.user,
