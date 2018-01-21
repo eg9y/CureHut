@@ -83,6 +83,13 @@ app.get("/spectate", authCheck, (req, res) => {
   });
 });
 
+app.get("/feedback", authCheck, (req, res) => {
+  res.render("feedback", {
+    user: req.user,
+    userList: users.getUserList(getParams.room)
+  });
+});
+
 const http = require("http");
 const socketIO = require("socket.io");
 // use http server instead of express server
@@ -117,6 +124,7 @@ io.on("connection", socket => {
       });
     }
     socket.join(params.room);
+    socket.emit("sendDetails", roomDetails, params.room);
     users.removeUser(socket.id);
     users.addUser(socket.id, params.username, params.room);
     console.log("new user connected. Room: ", users.getRoomList());

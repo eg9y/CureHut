@@ -1,6 +1,28 @@
-const socket = io();
-
 const params = $.deparam(window.location.search);
+
+const chatIsDone = () => {
+  window.location.assign("http://localhost:3000/portal");
+};
+let timer = 10;
+const countDown = () => {
+  $("#timer").text(timer);
+  timer--;
+};
+
+const startTheTimer = () => {
+  socket.emit(
+    "createMsg",
+    {
+      from: "Admin",
+      text: "Timer have started!"
+    },
+    () => {}
+  );
+  setTimeout(chatIsDone, 600000);
+  setInterval(countDown, 3000);
+};
+
+const socket = io();
 socket.on("connect", function() {
   socket.emit("join", params, err => {
     if (err) {
@@ -14,6 +36,16 @@ socket.on("connect", function() {
 
 socket.on("disconnect", function() {
   console.log("disconnected from server");
+});
+
+socket.on("sendDetails", (roomDetails, roomname) => {
+  const theRoom = roomDetails.filter(room => {
+    return room.room === roomname;
+  })[0];
+  console.log("theRoom", theRoom);
+  if (theRoom.count === 2) {
+    startTheTimer();
+  }
 });
 
 socket.on("updateUserList", function(users) {
@@ -44,8 +76,8 @@ socket.on("newMsg", function(msg) {
     classToAdd = "to-user";
   }
 
-  if(msg.from === 'Admin'){
-    classToAdd += ' from-admin';
+  if (msg.from === "Admin") {
+    classToAdd += " from-admin";
   }
 
   msgContainer.innerHTML +=
