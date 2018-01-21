@@ -5,7 +5,7 @@ socket.on("connect", function() {
   socket.emit("join", params, err => {
     if (err) {
       alert(err);
-      window.location.href = "/chatroom.html";
+      window.location.href = "/chatroom";
     } else {
       console.log("No error");
     }
@@ -38,9 +38,9 @@ socket.on("newMsg", function(msg) {
   console.log("msg.from");
   console.log(msg.from);
 
-  if(params.username === msg.from){
+  if (params.username === msg.from) {
     classToAdd = "from-user";
-  } else{
+  } else {
     classToAdd = "to-user";
   }
 
@@ -48,19 +48,14 @@ socket.on("newMsg", function(msg) {
     classToAdd += ' from-admin';
   }
 
-  msgContainer.innerHTML += 
-    '<div class="message-retainer"><div class="z-depth-1 chat-messages ' + classToAdd 
-    + '"> <span class="timestamp">' + formattedTime 
-    + "</span><p>" + msg.text + '</p></div></div>';
-
-  // msgContainer.innerHTML +=
-  //   '<div class="chat-messages > <span class="username">' +
-  //   params.username +
-  //   "</span><p>" +
-  //   msg.text +
-  //   '</p><p class="timestamp">' +
-  //   formattedTime +
-  //   "</p></div>";
+  msgContainer.innerHTML +=
+    '<div class="z-depth-1 chat-messages ' +
+    classToAdd +
+    '"> <span class="timestamp">' +
+    formattedTime +
+    "</span><p>" +
+    msg.text +
+    "</p></div>";
 
   // scroll to the bottom when a new message is sent
   var elem = document.getElementById("chat-wrapper");
