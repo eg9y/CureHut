@@ -160,10 +160,17 @@ io.on("connection", socket => {
         return room.room === getParams.room;
       });
       console.log("roomToReduce", roomToReduce);
-      if (roomToReduce !== undefined && roomDetails[roomToReduce]) {
+      if (
+        roomToReduce !== undefined &&
+        roomDetails[roomToReduce] &&
+        roomDetails[roomToReduce].count > 0
+      ) {
         console.log("roomtoreduce", roomToReduce);
         console.log("roomDetails", roomDetails[roomToReduce]);
         roomDetails[roomToReduce].count--;
+        if (roomDetails[roomToReduce].count === 0) {
+          roomDetails.splice(roomToReduce, 1);
+        }
       }
     }
     console.log("user disconnected");
