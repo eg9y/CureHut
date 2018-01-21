@@ -16,7 +16,7 @@ const startTheTimer = () => {
     },
     () => {}
   );
-  setTimeout(chatIsDone, 30000);
+  setTimeout(chatIsDone, 600000);
 
   function jpTimer() {
     var secTime = 0,

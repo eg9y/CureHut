@@ -74,8 +74,10 @@
           <strong>Commends</strong>
           <abbr title="Commends are rewarded to users by other users after they CHAT.">(?)</abbr>
           <p class="p-sidebar">
-            <i class="material-icons">mood</i> <%=user.friendly %>&nbsp;&nbsp;&nbsp;&nbsp;
-            <i class="material-icons">lightbulb_outline</i> <%=user.insightful %>
+            <i class="material-icons">mood</i>
+            <%=user.friendly %>&nbsp;&nbsp;&nbsp;&nbsp;
+              <i class="material-icons">lightbulb_outline</i>
+              <%=user.insightful %>
           </p>
 
         </div>
@@ -264,7 +266,7 @@ This is to encourage people to SPECTATE.">(?)</abbr>
             <strong>Streaks</strong>
             <abbr title="Writing a journal entry DAILY will increase you STREAK.">(?)</abbr>
             <p class="p-sidebar">
-              # Days
+              <%= user.streaks%> Days
             </p>
 
           </div>

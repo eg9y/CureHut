@@ -40,6 +40,15 @@ const userSchema = new Schema({
     type: Boolean,
     required: true,
     default: false
+  },
+  streaks: {
+    type: Number,
+    required: true,
+    default: 0
+  },
+  streakDate: {
+    type: Date,
+    default: new Date()
   }
 });
 

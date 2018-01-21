@@ -2,6 +2,7 @@ const router = require("express").Router();
 const mongoose = require("mongoose");
 const User = require("../models/user-model");
 const Journal = require("../models/journal");
+const moment = require("moment");
 
 const authCheck = (req, res, next) => {
   if (!req.user) {
@@ -33,8 +34,12 @@ router.post("/", (req, res) => {
   });
   User.findById(req.user.id).then(user => {
     user.journal.push(newJournal.id);
+
+    if (user.streakDate <= new Date()) {
+      user.streaks++;
+      user.streakDate.setDate(user.streakDate.getDate() + 1);
+    }
     Promise.all([user.save(), newJournal.save()]).then(() => {
-      console.log(user.journal);
       res.redirect("/portal");
     });
   });
