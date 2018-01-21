@@ -62,13 +62,24 @@ const authCheck = (req, res, next) => {
 const { generateMsg } = require("./server/utils/message.js");
 const { isRealString } = require("./server/utils/validation.js");
 const { Users } = require("./server/utils/users.js");
+let roomDetails = [];
+let getParams;
 
 app.get("/chatroom", authCheck, (req, res) => {
-  console.log("HOLLAAAAA", users.getRoomList());
   res.render("chatroom", {
     username: req.user.username,
     roomList: users.getRoomList(),
+    roomDetails,
     spectate: false
+  });
+});
+
+app.get("/spectate", authCheck, (req, res) => {
+  res.render("chatroom", {
+    username: req.user.username,
+    roomList: users.getRoomList(),
+    roomDetails,
+    spectate: true
   });
 });
 
@@ -81,8 +92,29 @@ let users = new Users();
 
 io.on("connection", socket => {
   socket.on("join", (params, callback) => {
+    getParams = params;
     if (!isRealString(params.room)) {
       return callback("Room is required");
+    }
+    const room = io.sockets.adapter.rooms[params.room];
+    if (room) {
+      const roomLength = room.length;
+      if (roomLength >= 2) {
+        return callback(`Room ${params.room} already has 2 chatters`);
+      }
+      const checkRoomDetails = roomDetails.findIndex(room => {
+        return room.room === params.room;
+      });
+
+      if (checkRoomDetails !== -1) {
+        console.log(checkRoomDetails);
+        roomDetails[checkRoomDetails].count++;
+      }
+    } else if (params.room) {
+      roomDetails.push({
+        room: params.room,
+        count: 1
+      });
     }
     socket.join(params.room);
     users.removeUser(socket.id);
@@ -110,6 +142,17 @@ io.on("connection", socket => {
   });
 
   socket.on("disconnect", () => {
+    if (getParams.room) {
+      roomToReduce = roomDetails.findIndex(room => {
+        return room.room === getParams.room;
+      });
+      console.log("roomToReduce", roomToReduce);
+      if (roomToReduce !== undefined && roomDetails[roomToReduce]) {
+        console.log("roomtoreduce", roomToReduce);
+        console.log("roomDetails", roomDetails[roomToReduce]);
+        roomDetails[roomToReduce].count--;
+      }
+    }
     console.log("user disconnected");
     const user = users.removeUser(socket.id);
 

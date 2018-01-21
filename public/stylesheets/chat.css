@@ -40,10 +40,17 @@
  	font-size: 10px;
  }
 
+ /*target message-retainers (thing between message-container and the messages)*/
+ .message-retainer{
+ 	width: 100%;
+ 	border-color: 5px solid pink;
+ }
+
+
  /*target all messages*/
  .chat-messages{
  	/*border: 4px solid red;*/
- 	width: 60%;
+ 	width: 40%;
  	margin: 5px;
  }
 
@@ -55,8 +62,13 @@
  	position: relative; 
  	right: 15px;
  	background: #00aabb;
+ 	margin-left: 100%;
  	/*border-radius: .4em;*/ 
  }
+
+ /** {
+ 	border: 3px solid purple;
+ }*/
 
  .from-user:after{ 
  	content: '';
@@ -81,20 +93,24 @@
  	position: relative; 
  	left: 15px;
  	background: green; 
+ 	margin-right: 100%;
  	/*border-radius: .4em;*/ 
  }
 
- .to-user:after { 
- 	content: ''; 
- 	position: absolute; 
- 	left: 0; top: 50%; 
- 	width: 0; height: 0; 
- 	border: 25px solid transparent; 
- 	border-right-color: green; 
- 	border-left: 0; border-bottom: 0; 
- 	margin-top: -12.5px; 
- 	margin-left: -25px; 
- }
+.to-user:after {
+	content: '';
+	position: absolute;
+	left: 0;
+	top: 50%;
+	width: 0;
+	height: 0;
+	border: 20px solid transparent;
+	border-right-color: green;
+	border-left: 0;
+	border-bottom: 0;
+	margin-top: -10px;
+	margin-left: -20px;
+}
 
  /*body of the chat wrapper*/
  #chat-wrapper
@@ -107,5 +123,8 @@
  	margin: auto;
  }
 
+#message-container{
+	width: 100%;
+}
  
  
