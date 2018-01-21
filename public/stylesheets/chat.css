@@ -52,6 +52,7 @@
  	/*border: 4px solid red;*/
  	width: 40%;
  	margin: 5px;
+ 	word-wrap: break-word;
  }
 
  /*target messages sent by the user*/
