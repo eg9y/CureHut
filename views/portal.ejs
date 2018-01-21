@@ -7,11 +7,11 @@
   <!--Import Google Icon Font-->
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <!--Import materialize.css-->
-  <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-alpha.3/css/materialize.min.css"
-    media="screen,projection" />
+  <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-alpha.3/css/materialize.min.css" media="screen,projection" />
+  <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.css"/>
 
   <!-- TODO: Better way to link stylesheet -->
-  <link rel="stylesheet" href="/stylesheets/portal.css">
+  <link rel="stylesheet" href="../public/stylesheets/portal.css">
   <!--For server set href="/stylesheets/portal.css" -->
   <!--Let browser know website is optimized for mobile-->
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -72,8 +72,7 @@
         <% } %>
   </ul>
 
-
-  <div class="row">
+  <div class="row" id="dashboard">
     <div class="col s9">
       <div class="container">
         <h4>Dashboard</h4>
@@ -84,50 +83,43 @@
           <h5>Journal Entry</h5>
           <div class="row">
             <form class="col s12" method="post" action "/portal">
-              <div class="row">
+              <div class="row no-pad-or-marg">
                 <div class="input-field col s6">
                   <input id="input_text" type="text" data-length="10" name="title">
                   <label for="input_text">Entry Title</label>
                 </div>
               </div>
-              <div class="row">
-                <div class="input-field col s12">
+              <div class="row no-pad-or-marg">
+                <div class="input-field col s12 no-pad-or-marg">
                   <textarea id="textarea1" class="materialize-textarea" data-length="120" name="entry"></textarea>
                   <label for="textarea1">Entry</label>
                 </div>
               </div>
               <div class="row">
-                <div class="col s5">
-                  <ul class="pagination">
-                    <li class="waves-effect">
-                      <a href="#!">
-                        <i class="material-icons">mood</i>
-                      </a>
-                    </li>
-                    <li class="waves-effect">
-                      <a href="#!">
-                        <i class="material-icons">mood</i>
-                      </a>
-                    </li>
-                    <li class="waves-effect">
-                      <a href="#!">
-                        <i class="material-icons">mood</i>
-                      </a>
-                    </li>
-                    <li class="waves-effect">
-                      <a href="#!">
-                        <i class="material-icons">mood</i>
-                      </a>
-                    </li>
-                    <li class="waves-effect">
-                      <a href="#!">
-                        <i class="material-icons">mood</i>
-                      </a>
-                    </li>
-                  </ul>
+                <div class="col s8">
+                  <div class="row">
+
+
+                        <input name="feeling" type="radio" id="mood0" />
+                        <label for="mood0" class="feeling blue lighten-5"><i class="material-icons">sentiment_very_dissatisfied</i></label>
+                        &nbsp;
+                        <input name="feeling" type="radio" id="mood1" />
+                        <label for="mood1" class="feeling blue lighten-4"><i class="material-icons">sentiment_dissatisfied</i></label>
+                        &nbsp;
+                        <input name="feeling" type="radio" id="mood2"  />
+                        <label for="mood2" class="feeling blue lighten-3"><i class="material-icons">sentiment_neutral</i></label>
+                        &nbsp;
+                        <input name="feeling" type="radio" id="mood3"/>
+                        <label for="mood3" class="feeling blue lighten-2"><i class="material-icons">sentiment_satisfied</i></label>
+                        &nbsp;
+                        <input name="feeling" type="radio" id="mood4"/>
+                        <label for="mood4" class="feeling blue lighten-1"><i class="material-icons">sentiment_very_satisfied</i></label>
+
+
+                  </div>
                 </div>
-                <div class="col s7">
-                  <input class="btn btn-large" type="submit" name="submit" value="Submit" onclick="submitEntry()">
+                <div class="col s4">
+                  <input class="btn btn-large blue" type="submit" name="submit" value="Submit" onclick="submitEntry()">
                 </div>
               </div>
             </form>
@@ -161,56 +153,6 @@
       </div>
     </div>
 
-<<<<<<< HEAD
-  <!-- SIDEBARD -->
-  <div class="col s3">
-    <div class="fixed z-depth-2 light-blue lighten-3">
-      <div class="section text-siderbar" id="dash_sidebar">
-        <div class="container">
-          Welcome Back,
-          <p><strong><% user.username %>!</strong></p>
-        </div>
-      </div>
-      <hr class="no-pad-or-marg">
-      <div class="section text-siderbar light-blue lighten-5">
-        <div class="container">
-
-          Time Bar<abbr title="Info">(?)</abbr>
-          <div class="progress">
-            <div class="determinate" style="width: 70%"></div>
-          </div>
-          <span>63</span> Minutes Remaining
-
-        </div>
-      </div>
-      <div class="section text-siderbar light-blue lighten-4">
-        <div class="container">
-
-          Commends<abbr title="Info">(?)</abbr>
-          <p class="p-sidebar">
-            <i class="material-icons">mood</i> #&nbsp;&nbsp;&nbsp;&nbsp;
-            <i class="material-icons">lightbulb_outline</i> #
-          </p>
-
-        </div>
-      </div>
-      <div class="section text-siderbar light-blue lighten-5">
-        <div class="container">
-
-          Streaks<abbr title="Info">(?)</abbr>
-          <p class="p-sidebar">
-            # Days
-          </p>
-
-        </div>
-      </div>
-      <hr class="no-pad-or-marg">
-      <div class="section light-blue lighten-4 no-pad-or-marg">
-        <a class="waves-effect waves-teal btn-flat btn-sidebar center-align" href="#">Chat&nbsp;&nbsp;<i class="material-icons">question_answer</i></a><!--href="portal/chat"-->
-      </div>
-      <div class="section light-blue lighten-5 no-pad-or-marg">
-        <a class="waves-effect waves-teal btn-flat btn-sidebar center-align">Spectate&nbsp;&nbsp;<i class="material-icons">remove_red_eye</i></a>
-=======
     <!-- SIDEBARD -->
     <div class="col s3">
       <div class="fixed z-depth-2 light-blue lighten-3">
@@ -271,7 +213,6 @@
             <i class="material-icons">remove_red_eye</i>
           </a>
         </div>
->>>>>>> 538a3edee87a60f05dc11d55e492eb88de2d2a06
       </div>
       <!-- END OF SIDEBAR -->
     </div>
