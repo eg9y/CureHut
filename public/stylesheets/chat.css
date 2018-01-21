@@ -52,6 +52,7 @@
  	/*border: 4px solid red;*/
  	width: 40%;
  	margin: 5px;
+ 	word-wrap: break-word;
  }
 
  /*target messages sent by the user*/
@@ -59,18 +60,18 @@
  .from-user{
  	float: right;
  	padding: 5px;
- 	position: relative; 
+ 	position: relative;
  	right: 15px;
  	background: #00aabb;
  	margin-left: 100%;
- 	/*border-radius: .4em;*/ 
+ 	/*border-radius: .4em;*/
  }
 
  /** {
  	border: 3px solid purple;
  }*/
 
- .from-user:after{ 
+ .from-user:after{
  	content: '';
  	position: absolute;
  	right: 0;
@@ -82,7 +83,7 @@
  	border-right: 0;
  	border-bottom: 0;
  	margin-top: -10px;
- 	margin-right: -20px; 
+ 	margin-right: -20px;
  }
 
  /*target messages send by other users*/
@@ -90,11 +91,11 @@
  .to-user{
  	float: left;
  	padding: 5px;
- 	position: relative; 
+ 	position: relative;
  	left: 15px;
- 	background: green; 
+ 	background: green;
  	margin-right: 100%;
- 	/*border-radius: .4em;*/ 
+ 	/*border-radius: .4em;*/
  }
 
 .to-user:after {
@@ -126,5 +127,3 @@
 #message-container{
 	width: 100%;
 }
- 
- 
