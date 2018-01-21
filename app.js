@@ -8,7 +8,6 @@ const app = express();
 const authRouter = require("./routes/auth-routes");
 const dashboardRouter = require("./routes/dashboard-routes");
 const profileRouter = require("./routes/profile-routes");
-const keys = require("./config/keys");
 
 //will run passport.use later on so "google" strategy will be defined
 const passportSetup = require("./config/passport-setup");
@@ -28,7 +27,7 @@ app.use(
 app.use(
   cookieSession({
     maxAge: 24 * 60 * 60 * 1000,
-    keys: [keys.session.key]
+    keys: [process.env.key]
   })
 );
 
@@ -38,7 +37,7 @@ const path = require("path");
 app.use(express.static(path.join(__dirname, "public")));
 
 // connecct to mongodb
-mongoose.connect(keys.mongodb.dbURI, () => {
+mongoose.connect(process.env.dbURI, () => {
   console.log("connected to mongodb");
 });
 
