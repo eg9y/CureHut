@@ -70,12 +70,12 @@ io.on("connection", socket => {
     if (!isRealString(params.room)) {
       return callback("Room is required");
     }
+    console.log(users.getRoomList());
     socket.join(params.room);
     users.removeUser(socket.id);
     console.log(params);
     users.addUser(socket.id, params.username, params.room);
 
-    console.log(users.users);
     io.to(params.room).emit("updateUserList", users.getUserList(params.room));
     socket.emit(
       "newMsg",

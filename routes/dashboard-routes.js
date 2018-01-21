@@ -3,6 +3,10 @@ const mongoose = require("mongoose");
 const User = require("../models/user-model");
 const Journal = require("../models/journal");
 
+const { roomList } = require("../app.js");
+
+console.log(roomList);
+
 const authCheck = (req, res, next) => {
   if (!req.user) {
     return res.redirect("/auth/login");
@@ -42,6 +46,7 @@ router.post("/", (req, res) => {
 router.get("/chatroom", authCheck, (req, res) => {
   res.render("chatroom", {
     username: req.user.username,
+    roomList,
     spectate: false
   });
 });
