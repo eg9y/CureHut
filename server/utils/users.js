@@ -23,14 +23,12 @@ class Users {
     return this.users.filter(user => user.id === id)[0];
   }
   getUserList(room) {
-    console.log("user", this.users);
     const users = this.users.filter(
       user => user.room === room && user.spectate == "false"
     );
     const namesArray = users.map(user => {
       return user.username;
     });
-    console.log("wtf", users);
     return namesArray;
   }
 
