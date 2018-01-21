@@ -84,6 +84,10 @@ app.get("/spectate", authCheck, (req, res) => {
 });
 
 app.get("/feedback", authCheck, (req, res) => {
+  User.findById(req.user.id).then(user => {
+    user.time -= 10;
+    return user.save();
+  });
   res.render("feedback", {
     user: req.user,
     userList: saveUsers
