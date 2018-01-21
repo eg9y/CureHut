@@ -2,5 +2,11 @@
   padding: 10% 10%;
 }
 hr {
-  width: 25em;
+  width: 50em;
+}
+p {
+  font-size: 24px;
+}
+h2 {
+  padding: 0 auto 10px auto ;
 }
