@@ -6,52 +6,52 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0 user-scalable=no">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Join | FeelsChat</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
     <link rel="stylesheet" href="/stylesheets/chatbrowser.css" />
 </head>
 
-<body class="centered-form">
-    <div class="centered-form__form">
-        <% if(!spectate) { %>
-            <form action="/chat.html" name="chat">
-                <% } else { %>
-                    <form action="/spectate.html" name="spectate">
-                        <% } %>
-                            <div class="form-field">
-                                <h3>Join a Chat</h3>
-                            </div>
-                            <div>
-                                <h2>
-                                    <strong>username:</strong>
-                                    <%=username%>
-                                </h2>
-                            </div>
-                            <div class="form-field">
-                                <label for="">Room name</label>
-                                <input type="text" name="room" id="room" autofocus>
-                                <label for="">Active Rooms</label>
-                                <select name="Icecream Flavours" id="activerooms" onclick="getRoom()">
-                                    <% for(let x = 0; x < roomList.length; x++) { %>
-                                        <option value=<%=roomList[x] %>>
-                                            <%=roomList[x] %>
-                                                c=
-                                                <%=roomDetails[x].count %>
-                                        </option>
-                                        <% } %>
-                                </select>
+<body>
+  <div class="container center-piece">
+    <% if(!spectate) { %>
+      <form action="/chat.html" name="chat">
+    <% } else { %>
+      <form action="/spectate.html" name="spectate">
+    <% } %>
+        <h3>Join a Chat</h3>
+        <h2>Your username is "<%=username%>"</h2>
+        <div class="form-field">
+          <div class="space">
+            <label for="">Room name</label>
+            <input type="text" name="room" id="room" autofocus>
+          </div>
+          <div class="space">
+            <label for="">Active Rooms</label>
+            <select name="Icecream Flavours xD" id="activerooms" onclick="getRoom()">
+              <% for(let x = 0; x < roomList.length; x++) { %>
+                <option value=<%=roomList[x] %>>
+              <%=roomList[x] %>
+              c=
+              <%=roomDetails[x].count %>
+                </option>
+              <% } %>
+            </select>
+          </div>
 
-                                <input type="hidden" name="username" value=<%=username%>
-                            </div>
-                            <div class="form-field">
-                                <button>
-                                    <% if(!spectate) { %>
-                                        Join
-                                        <% } else { %>
-                                            Spectate
-                                            <% } %>
-                                </button>
-                            </div>
-                    </form>
-    </div>
+            <input type="hidden" name="username" value=<%=username%>
+        </div>
+
+        <div class="form-field">
+          <button>
+              <% if(!spectate) { %>
+                Join
+              <% } else { %>
+                Spectate
+              <% } %>
+          </button>
+          <button type="button" name="Cancel"><a href="/portal">Cancel</a></button>
+        </div>
+      </form>
+  </div>
 
     <script>
         const getRoom = () => {
