@@ -2,7 +2,8 @@ const params = $.deparam(window.location.search);
 
 const chatIsDone = () => {
   alert("Time is Up :(");
-  window.location.assign("http://localhost:3000/feedback");
+  // window.location.assign("http://localhost:3000/feedback");
+  window.location.assign("https://aqueous-coast-83469.herokuapp.com/feedback");
 };
 let timer = 10;
 
