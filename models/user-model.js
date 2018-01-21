@@ -30,6 +30,11 @@ const userSchema = new Schema({
     type: Number,
     default: 0,
     required: true
+  },
+  time: {
+    type: Number,
+    default: 60,
+    required: true
   }
 });
 
