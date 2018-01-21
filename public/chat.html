@@ -27,73 +27,71 @@
 
 </script>
 
-<<<<<<< HEAD=======>>>>>>> c5014662b994be259d1915af00f4783f00e4cd74
+<body>
+    <h3 id="timer">10</h3>
 
-    <body>
-        <h3 id="timer">10</h3>
-
-        <header class="navbar-fixed">
-            <nav>
-                <div class="nav-wrapper cyan darken-4">
-                    <div class="container">
-                        <span href="#" class="brand-logo center">Logo</span>
-                        <a href="#" data-target="mobile" class="sidenav-trigger">
-                            <i class="material-icons">menu</i>
-                        </a>
-                    </div>
+    <header class="navbar-fixed">
+        <nav>
+            <div class="nav-wrapper cyan darken-4">
+                <div class="container">
+                    <span href="#" class="brand-logo center">Logo</span>
+                    <a href="#" data-target="mobile" class="sidenav-trigger">
+                        <i class="material-icons">menu</i>
+                    </a>
                 </div>
-            </nav>
-        </header>
-
-        <h1> Chatroom </h1>
-        <div id="chat-wrapper">
-            <div class="card-panel yellow darken-4">
-                <span class="white-text">
-                    Please be nice in the chat!
-                </span>
             </div>
-            <!-- message container for messages -->
-            <div id="message-container"></div>
+        </nav>
+    </header>
+
+    <h1> Chatroom </h1>
+    <div id="chat-wrapper">
+        <div class="card-panel yellow darken-4">
+            <span class="white-text">
+                Please be nice in the chat!
+            </span>
         </div>
-        <!-- form for sending messages to chat -->
-        <form id="message-form">
-            <div class="row">
-                <div class="col l1 s3">
-                    <button class="btn waves-effect waves-light" type="button" name="button" id="leave">
-                        quit
-                        <i class="material-icons center ">close</i>
-                    </button>
-                </div>
-                <div class="input-field col l10 s6 ">
-                    <textarea placeholder="Type a message here... " maxlength="420 " class="materialize-textarea " name="message" id="chat"></textarea>
-                </div>
-
-                <div class="col l1 s3 ">
-                    <button class="btn waves-effect waves-light " type="submit" name="button " id="message" onclick="window.setTimeout(clearField,0);">
-                        send
-                        <i class="material-icons center ">send</i>
-                    </button>
-                </div>
+        <!-- message container for messages -->
+        <div id="message-container"></div>
+    </div>
+    <!-- form for sending messages to chat -->
+    <form id="message-form">
+        <div class="row">
+            <div class="col l1 s3">
+                <button class="btn waves-effect waves-light" type="button" name="button" id="leave">
+                    quit
+                    <i class="material-icons center ">close</i>
+                </button>
             </div>
-        </form>
-        <a href="/feedback">Exitsss</a>
-        <!--Import jQuery before materialize.js-->
-        <script type="text/javascript " src="https://code.jquery.com/jquery-3.2.1.min.js "></script>
-        <script type="text/javascript " src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-alpha.3/js/materialize.min.js "></script>
-        <script src="/socket.io/socket.io.js "></script>
-        <script src="/js/libs/jquery-3.3.1.min.js "></script>
-        <script src="/js/libs/moment.js "></script>
-        <script src="/js/libs/ejs.min.js "></script>
-        <script src="/js/libs/deparam.js "></script>
-        <script src="/js/chat.js "></script>
-        <script>
-            document.getElementById("chat").addEventListener("keyup", function (event) {
-                event.preventDefault();
-                if (event.keyCode === 13 && !event.shiftKey) {
-                    document.getElementById("message").click();
-                }
-            });
-        </script>
-    </body>
+            <div class="input-field col l10 s6 ">
+                <textarea placeholder="Type a message here... " maxlength="420 " class="materialize-textarea " name="message" id="chat"></textarea>
+            </div>
+
+            <div class="col l1 s3 ">
+                <button class="btn waves-effect waves-light " type="submit" name="button " id="message" onclick="window.setTimeout(clearField,0);">
+                    send
+                    <i class="material-icons center ">send</i>
+                </button>
+            </div>
+        </div>
+    </form>
+    <a href="/feedback">Exitsss</a>
+    <!--Import jQuery before materialize.js-->
+    <script type="text/javascript " src="https://code.jquery.com/jquery-3.2.1.min.js "></script>
+    <script type="text/javascript " src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-alpha.3/js/materialize.min.js "></script>
+    <script src="/socket.io/socket.io.js "></script>
+    <script src="/js/libs/jquery-3.3.1.min.js "></script>
+    <script src="/js/libs/moment.js "></script>
+    <script src="/js/libs/ejs.min.js "></script>
+    <script src="/js/libs/deparam.js "></script>
+    <script src="/js/chat.js "></script>
+    <script>
+        document.getElementById("chat").addEventListener("keyup", function (event) {
+            event.preventDefault();
+            if (event.keyCode === 13 && !event.shiftKey) {
+                document.getElementById("message").click();
+            }
+        });
+    </script>
+</body>
 
 </html>

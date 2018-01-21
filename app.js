@@ -124,7 +124,9 @@ io.on("connection", socket => {
       });
     }
     socket.join(params.room);
-    socket.emit("sendDetails", roomDetails, params.room);
+
+    io.to(params.room).emit("sendDetails", roomDetails, params.room);
+
     users.removeUser(socket.id);
     users.addUser(socket.id, params.username, params.room);
     console.log("new user connected. Room: ", users.getRoomList());
