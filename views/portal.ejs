@@ -48,7 +48,7 @@
       <a href="/">Home</a>
     </li>
     <li>
-      <a href="/dashboard">Dashboard</a>
+      <a href="/portal">Dashboard</a>
     </li>
     <li>
       <a href="/auth/logout">Logout</a>
@@ -177,7 +177,7 @@
           <h5>Journal History</h5>
           <br>
           <ul class="collapsible" data-collapsible="accordion">
-            <% for(let i=0; i < journals.length/2; i++) { %>
+            <% for(let i=journals.length/2 -1; i >= 0; i--) { %>
               <li>
                 <div class="collapsible-header">
                   <% if(journals[i].feeling == "very dissatisfied") { %>
