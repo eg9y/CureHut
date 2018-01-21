@@ -23,7 +23,15 @@
             </div>
             <div class="form-field">
                 <label for="">Room name</label>
-                <input type="text" name="room" autofocus>
+                <input type="text" name="room" id="room" autofocus>
+                <label for="">Active Rooms</label>
+                <select name="Icecream Flavours" id="activerooms" onclick="getRoom()">
+                    <option value="double chocolate">Double Chocolate</option>
+                    <option value="vanilla">Vanilla</option>
+                    <option value="strawberry" selected>Strawberry</option>
+                    <option value="caramel">Caramel</option>
+                </select>
+
                 <input type="hidden" name="username" value=<%=username%>
             </div>
             <div class="form-field">
@@ -31,6 +39,15 @@
             </div>
         </form>
     </div>
+
+    <script>
+        const getRoom = () => {
+            const select = document.getElementById("activerooms");
+            const choice = select.options[select.options.selectedIndex].value;
+            const roomToGo = document.getElementById("room");
+            roomToGo.value = choice;
+        }
+    </script>
 </body>
 
 </html>
