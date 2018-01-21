@@ -3,6 +3,12 @@ h1 {
   text-align: center;
 }
 
+html, body{
+	margin: 0;
+	padding: 0;
+	height: 100%;
+}
+
 a {
   color: white;
 }
@@ -163,7 +169,7 @@ a {
 
 /*body of the chat wrapper*/
 #chat-wrapper {
-  height: 450px;
+  height: 80%;
   width: 95%;
   vertical-align: center;
   overflow-x: hidden;
