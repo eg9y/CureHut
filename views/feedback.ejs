@@ -16,7 +16,7 @@
   <!-- rediret to /portal if there were no other people in the chat -->
   <% if(userList.length <= 1){ %>
 
-    <meta http-equiv="refresh" content="0; url=/portal" />
+    <!--<meta http-equiv="refresh" content="0; url=/portal" />-->
     <% } %>
 
 
@@ -94,6 +94,7 @@
             <h3>username:
               <%=userList[x]%>
             </h3>
+            <br>
             <input type="hidden" name="username" value=<%=userList[x]%>>
             <div class="col m4 s12">
               <i class="large material-icons">mood</i>
@@ -104,7 +105,7 @@
             <div class="col m4 s12">
               <i class="large material-icons">lightbulb_outline</i>
               <h2> Insightful </h2>
-              <p> This conversation changed my outlook on life. </p>
+              <p> This conversation was thought-provoking. </p>
               <input class="waves-effect waves-light btn-large" type="submit" name="commend" value="Insightful">
             </div>
             <div class="col m4 s12" id="report-column">
