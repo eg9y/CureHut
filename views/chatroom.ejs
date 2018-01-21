@@ -27,19 +27,27 @@
                             <div class="form-field">
                                 <div class="space">
                                     <label for="">Room name</label>
-                                    <input type="text" name="room" id="room" autofocus>
+                                    <% if (!spectate) { %>
+                                        <input type="text" name="room" id="room" autofocus>
+                                        <% } else { %>
+                                            <input type="text" name="room" id="room" disabled autofocus>
+                                            <% } %>
                                 </div>
                                 <div class="space">
                                     <label for="">Active Rooms</label>
-                                    <select name="Icecream Flavours xD" id="activerooms" onclick="getRoom()">
+                                    <select name="room" id="activerooms" onclick="getRoom()">
                                         <% for(let x = 0; x < roomList.length; x++) { %>
                                             <option value=<%=roomList[x] %>>
-                                                <%=roomList[x] %> (
-                                                    <% if (roomDetails[x]) { %>
-                                                        <%=roomDetails[x].count %>)
+                                                <%=roomList[x] %>
+                                                    (
+                                                    <% if(roomDetails[x]) { %>
+                                                        <%=roomDetails[x].count%>
                                                             <% } %>
+                                                                )
                                             </option>
                                             <% } %>
+                                                <input type="hidden" name="spectate" value=<%=spectate%>>
+                                                <input type="hidden" name="username" value=<%=username%>>
                                     </select>
                                 </div>
 
