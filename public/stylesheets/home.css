@@ -2,11 +2,24 @@
   padding: 10% 10%;
 }
 hr {
-  width: 50em;
+  width: 20em;
 }
 p {
   font-size: 24px;
 }
 h2 {
   padding: 0 auto 10px auto ;
+}
+img {
+  max-width: 75%;
+  max-height: 75%;
+}
+.top-pad {
+  padding-top: 80px !important;
+}
+#dash {
+  max-width: 50%;
+  max-height: 50%;
+  margin: 100px 0 0 0;
+  border-radius: 15px 15px 0 0;
 }
