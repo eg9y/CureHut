@@ -1,7 +1,7 @@
 const passport = require("passport");
 const GoogleStrategy = require("passport-google-oauth20").Strategy;
-const keys = require("./keys");
 const User = require("../models/user-model");
+require("dotenv").config();
 
 const randomstring = require("randomstring");
 
@@ -23,8 +23,8 @@ passport.use(
   new GoogleStrategy(
     {
       // options for the google strat
-      clientID: keys.google.clientID,
-      clientSecret: keys.google.clientSecret,
+      clientID: process.env.clientID,
+      clientSecret: process.env.clientSecret,
       callbackURL: "/auth/google/redirect"
     },
     (accessToken, refreshToken, profile, done) => {
