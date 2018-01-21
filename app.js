@@ -3,6 +3,7 @@ const mongoose = require("mongoose");
 const cookieSession = require("cookie-session");
 const passport = require("passport");
 require("dotenv").config();
+const User = require("./models/user-model");
 
 const app = express();
 const authRouter = require("./routes/auth-routes");
@@ -87,6 +88,28 @@ app.get("/feedback", authCheck, (req, res) => {
     user: req.user,
     userList: saveUsers
   });
+});
+
+app.post("/feedback", authCheck, (req, res) => {
+  User.findOne({
+    username: req.body.username
+  })
+    .then(user => {
+      console.log("weiner", user);
+      if (req.body.commend) {
+        if (req.body.commend == "Friendly") {
+          user.friendly++;
+        } else {
+          user.insightful++;
+        }
+      } else if (req.body.report) {
+        user.reported++;
+      }
+      return user.save();
+    })
+    .then(() => {
+      res.redirect("/portal");
+    });
 });
 
 const http = require("http");
