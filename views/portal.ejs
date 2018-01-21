@@ -7,8 +7,10 @@
   <!--Import Google Icon Font-->
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <!--Import materialize.css-->
-  <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-alpha.3/css/materialize.min.css" media="screen,projection" />
-  <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.css"/>
+  <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-alpha.3/css/materialize.min.css"
+    media="screen,projection" />
+  <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.css"
+  />
 
   <!-- TODO: Better way to link stylesheet -->
   <link rel="stylesheet" href="/stylesheets/portal.css">
@@ -88,20 +90,30 @@
                   <div class="row">
 
 
-                        <input name="feeling" type="radio" id="mood0" />
-                        <label for="mood0" class="feeling blue lighten-5"><i class="material-icons">sentiment_very_dissatisfied</i></label>
-                        &nbsp;
-                        <input name="feeling" type="radio" id="mood1" />
-                        <label for="mood1" class="feeling blue lighten-4"><i class="material-icons">sentiment_dissatisfied</i></label>
-                        &nbsp;
-                        <input name="feeling" type="radio" id="mood2"  />
-                        <label for="mood2" class="feeling blue lighten-3"><i class="material-icons">sentiment_neutral</i></label>
-                        &nbsp;
-                        <input name="feeling" type="radio" id="mood3"/>
-                        <label for="mood3" class="feeling blue lighten-2"><i class="material-icons">sentiment_satisfied</i></label>
-                        &nbsp;
-                        <input name="feeling" type="radio" id="mood4"/>
-                        <label for="mood4" class="feeling blue lighten-1"><i class="material-icons">sentiment_very_satisfied</i></label>
+                    <input name="feeling" type="radio" id="mood0" />
+                    <label for="mood0" class="feeling blue lighten-5">
+                      <i class="material-icons">sentiment_very_dissatisfied</i>
+                    </label>
+                    &nbsp;
+                    <input name="feeling" type="radio" id="mood1" />
+                    <label for="mood1" class="feeling blue lighten-4">
+                      <i class="material-icons">sentiment_dissatisfied</i>
+                    </label>
+                    &nbsp;
+                    <input name="feeling" type="radio" id="mood2" />
+                    <label for="mood2" class="feeling blue lighten-3">
+                      <i class="material-icons">sentiment_neutral</i>
+                    </label>
+                    &nbsp;
+                    <input name="feeling" type="radio" id="mood3" />
+                    <label for="mood3" class="feeling blue lighten-2">
+                      <i class="material-icons">sentiment_satisfied</i>
+                    </label>
+                    &nbsp;
+                    <input name="feeling" type="radio" id="mood4" />
+                    <label for="mood4" class="feeling blue lighten-1">
+                      <i class="material-icons">sentiment_very_satisfied</i>
+                    </label>
 
 
                   </div>
@@ -119,13 +131,19 @@
           <br>
           <ul class="collapsible" data-collapsible="accordion">
             <% for(let i=0; i < journals.length/2; i++) { %>
-            <li>
-              <div class="collapsible-header">
-                <i class="material-icons">mood</i><span class="date"> 1/20/18 &nbsp;&nbsp;</span><%= journals[i].title %>
-              </div>
-              <div class="collapsible-body"><span><%= journals[i].entry %></span></div>
-            </li>
-            <% } %>
+              <li>
+                <div class="collapsible-header">
+                  <i class="material-icons">mood</i>
+                  <span class="date"> 1/20/18 &nbsp;&nbsp;</span>
+                  <%= journals[i].title %>
+                </div>
+                <div class="collapsible-body">
+                  <span>
+                    <%= journals[i].entry %>
+                  </span>
+                </div>
+              </li>
+              <% } %>
           </ul>
         </div>
 
@@ -190,7 +208,7 @@
         </div>
         <hr class="no-pad-or-marg">
         <div class="section light-blue lighten-4 no-pad-or-marg">
-          <a class="waves-effect waves-teal btn-flat btn-sidebar center-align" href="#">Chat&nbsp;&nbsp;
+          <a class="waves-effect waves-teal btn-flat btn-sidebar center-align" href="/portal/chatroom">Chat&nbsp;&nbsp;
             <i class="material-icons">question_answer</i>
           </a>
           <!--href="portal/chat"-->

@@ -39,8 +39,8 @@ router.post("/", (req, res) => {
   });
 });
 
-router.get("/chat", authCheck, (req, res) => {
-  res.render("chat", {
+router.get("/chatroom", authCheck, (req, res) => {
+  res.render("chatroom", {
     username: req.user.username,
     spectate: false
   });

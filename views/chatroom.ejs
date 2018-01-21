@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0 user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Join | FeelsChat</title>
+    <link rel="stylesheet" href="/css/styles.css" />
+</head>
+
+<body class="centered-form">
+    <div class="centered-form__form">
+        <form action="/chat.html">
+            <div class="form-field">
+                <h3>Join a Chat</h3>
+            </div>
+            <div>
+                <h2>
+                    <strong>username:</strong>
+                    <%=username%>
+                </h2>
+            </div>
+            <div class="form-field">
+                <label for="">Room name</label>
+                <input type="text" name="room" id="room" autofocus>
+                <label for="">Active Rooms</label>
+                <select name="Icecream Flavours" id="activerooms" onclick="getRoom()">
+                    <option value="double chocolate">Double Chocolate</option>
+                    <option value="vanilla">Vanilla</option>
+                    <option value="strawberry" selected>Strawberry</option>
+                    <option value="caramel">Caramel</option>
+                </select>
+
+                <input type="hidden" name="username" value=<%=username%>
+            </div>
+            <div class="form-field">
+                <button>Join</button>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        const getRoom = () => {
+            const select = document.getElementById("activerooms");
+            const choice = select.options[select.options.selectedIndex].value;
+            const roomToGo = document.getElementById("room");
+            roomToGo.value = choice;
+        }
+    </script>
+</body>
+
+</html>
