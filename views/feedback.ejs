@@ -8,12 +8,15 @@
  <!--Import materialize.css-->
  <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-alpha.3/css/materialize.min.css"  media="screen,projection"/>
  <link rel="stylesheet" href="/stylesheets/feedback.css">
+ 
  <style>
-   i{
-    padding: 50px;
+
+   .col{
+      text-align: center;
    }
-   .icon{
-    text-align: center;
+
+   #report-column{
+      border-left: 2px solid black;
    }
 
  </style>
@@ -57,19 +60,38 @@
 
  <div class="container">
       <div class="row">
-        <div class="col m4">
-          <i class="center-align large material-icons">mood</i>
+        <div class="col m4 s12">
+          <i class="large material-icons">mood</i>
+          <h2> Friendly </h2>
+          <p> This was a pleasant conversation. </p>
+          <button class="waves-effect waves-light btn-large">Commend</button>
         </div>
-        <div class="col m4">
-          <i class="center-align large material-icons">lightbulb_outline</i>
+        <div class="col m4 s12">
+          <i class="large material-icons">lightbulb_outline</i>
+          <h2> Insightful </h2>
+          <p> This conversation changed my outlook on life. </p>
+          <button class="waves-effect waves-light btn-large">Commend</button>
         </div>
-        <div class="col m4">
-          <i class="center-align large material-icons">thumb_down</i>
-        </div>
-      </div>
-      <div class="row">
+        <div class="col m4 s12" id="report-column">
+          <i class="large material-icons">thumb_down</i>
+          <h2> Inappropriate </h2>
+          <p> This conversation was inappropriate or rude. </p> 
+          <button class="waves-effect waves-light btn-large">Report</button>
 
+        </div>
       </div>
+
+      <!-- <div class="row">
+        <div class="col m4">
+          <i class="large material-icons">mood</i>
+        </div>
+        <div class="col m4">
+          <i class="large material-icons">lightbulb_outline</i>
+        </div>
+        <div class="col m4">
+          <i class="large material-icons">thumb_down</i>
+        </div>
+      </div> -->
  </div>
 
 
