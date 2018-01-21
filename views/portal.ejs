@@ -41,10 +41,10 @@
     </nav>
   </header>
 
-  <ul class="sidenav" id="mobile">
-    <% if (user) { %>
+<!-- SIDENAV --------------------------------------------------------------->
+  <ul class="sidenav light-blue lighten-3" id="mobile">
       <li>
-        <a href="#">Home</a>
+        <a href="/">Home</a>
       </li>
       <li>
         <a href="/dashboard">Dashboard</a>
@@ -52,18 +52,62 @@
       <li>
         <a href="/auth/logout">Logout</a>
       </li>
-      <% } else { %>
-        <li>
-          <a href="/auth/login">Login</a>
-        </li>
-        <li>
-          <a href="/auth/login">Sign Up</a>
-        </li>
-        <% } %>
+      <div class="divider"></div>
+        <div class="light-blue lighten-3">
+
+          <div class="section text-siderbar light-blue lighten-5">
+            <div class="container">
+
+              <strong>Time Bar</strong>
+              <abbr title="You lose time credits when you CHAT; you gain time credits at twice the rate when you SPECTATE.">(?)</abbr>
+              <div class="progress">
+                <div class="determinate" style="width: 70%"></div>
+              </div>
+              <span>63</span> CHAT Minutes
+
+            </div>
+          </div>
+          <div class="section text-siderbar light-blue lighten-4">
+            <div class="container">
+
+              <strong>Commends</strong>
+              <abbr title="Commends are rewarded to users by other users after they CHAT.">(?)</abbr>
+              <p class="p-sidebar">
+                <i class="material-icons">mood</i> #&nbsp;&nbsp;&nbsp;&nbsp;
+                <i class="material-icons">lightbulb_outline</i> #
+              </p>
+
+            </div>
+          </div>
+          <div class="section text-siderbar light-blue lighten-5">
+            <div class="container">
+
+              <strong>Streaks</strong>
+              <abbr title="Writing a journal entry DAILY will increase you STREAK.">(?)</abbr>
+              <p class="p-sidebar">
+                # Days
+              </p>
+
+            </div>
+          </div>
+        
+          <div class="section light-blue lighten-4 no-pad-or-marg valign-wrapper">
+            <a class="waves-effect waves-teal btn-flat btn-sidebar center-align" href="/chatroom"><strong>Chat</strong>&nbsp;&nbsp;
+              <i class="material-icons">question_answer</i>
+            </a>
+            <!--href="portal/chat"-->
+          </div>
+          <div class="section light-blue lighten-5 no-pad-or-marg valign-wrapper">
+            <a class="waves-effect waves-teal btn-flat btn-sidebar center-align"><strong>Spectate</strong>&nbsp;&nbsp;
+              <i class="material-icons">remove_red_eye</i>
+            </a>
+          </div>
+        </div>
   </ul>
+<!-- SIDENAV END ------------------------------------------------------------>
 
   <div class="row" id="dashboard">
-    <div class="col s9">
+    <div class="col l9 m12 s12">
       <div class="container">
         <h4>Dashboard</h4>
         <div class="divider"></div>
@@ -86,7 +130,7 @@
                 </div>
               </div>
               <div class="row">
-                <div class="col s8">
+                <div class="col m8 s12">
                   <div class="row">
 
 
@@ -118,7 +162,7 @@
 
                   </div>
                 </div>
-                <div class="col s4">
+                <div class="col m4 s12">
                   <input class="btn btn-large blue" type="submit" name="submit" value="Submit" onclick="submitEntry()">
                 </div>
               </div>
@@ -159,14 +203,14 @@
     </div>
 
     <!-- SIDEBARD -->
-    <div class="col s3">
+    <div class="col l3 m0 s0 mobile-hide">
       <div class="fixed z-depth-2 light-blue lighten-3">
         <div class="section text-siderbar" id="dash_sidebar">
           <div class="container">
             Welcome Back,
             <p>
-              <strong>
-                <%=user.username %>!</strong>
+              <h5>
+                <%=user.username %>!</h5>
             </p>
           </div>
         </div>
@@ -174,19 +218,20 @@
         <div class="section text-siderbar light-blue lighten-5">
           <div class="container">
 
-            Time Bar
-            <abbr title="You lose time credits when you CHAT; you gain time credits at twice the rate when you SPECTATE.">(?)</abbr>
+            <strong>Time Bar</strong>
+            <abbr title="You lose time credits when you CHAT; you gain time credits at twice the rate when you SPECTATE.
+This is to encourage people to SPECTATE.">(?)</abbr> <!-- The spacing on this line is intentional. -->
             <div class="progress">
               <div class="determinate" style="width: 70%"></div>
             </div>
-            <span>63</span> Minutes Remaining
+            <span>63</span> CHAT Minutes
 
           </div>
         </div>
         <div class="section text-siderbar light-blue lighten-4">
           <div class="container">
 
-            Commends
+            <strong>Commends</strong>
             <abbr title="Commends are rewarded to users by other users after they CHAT.">(?)</abbr>
             <p class="p-sidebar">
               <i class="material-icons">mood</i> #&nbsp;&nbsp;&nbsp;&nbsp;
@@ -198,7 +243,7 @@
         <div class="section text-siderbar light-blue lighten-5">
           <div class="container">
 
-            Streaks
+            <strong>Streaks</strong>
             <abbr title="Writing a journal entry DAILY will increase you STREAK.">(?)</abbr>
             <p class="p-sidebar">
               # Days
@@ -208,13 +253,13 @@
         </div>
         <hr class="no-pad-or-marg">
         <div class="section light-blue lighten-4 no-pad-or-marg">
-          <a class="waves-effect waves-teal btn-flat btn-sidebar center-align" href="/chatroom">Chat&nbsp;&nbsp;
+          <a class="waves-effect waves-teal btn-flat btn-sidebar center-align" href="/chatroom"><strong>CHAT</strong>&nbsp;&nbsp;
             <i class="material-icons">question_answer</i>
           </a>
           <!--href="portal/chat"-->
         </div>
         <div class="section light-blue lighten-5 no-pad-or-marg">
-          <a class="waves-effect waves-teal btn-flat btn-sidebar center-align">Spectate&nbsp;&nbsp;
+          <a class="waves-effect waves-teal btn-flat btn-sidebar center-align"><strong>Spectate</strong>&nbsp;&nbsp;
             <i class="material-icons">remove_red_eye</i>
           </a>
         </div>
