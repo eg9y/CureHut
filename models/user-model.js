@@ -15,7 +15,22 @@ const userSchema = new Schema({
       type: Schema.Types.ObjectId,
       ref: "journal"
     }
-  ]
+  ],
+  friendly: {
+    type: Number,
+    default: 0,
+    required: true
+  },
+  insightful: {
+    type: Number,
+    default: 0,
+    required: true
+  },
+  reported: {
+    type: Number,
+    default: 0,
+    required: true
+  }
 });
 
 const User = mongoose.model("user", userSchema);

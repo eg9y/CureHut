@@ -2,13 +2,7 @@ const params = $.deparam(window.location.search);
 
 const chatIsDone = () => {
   alert("Time is Up :(");
-  if (process.env.PORT === 3000) {
-    window.location.assign("http://localhost:3000/feedback");
-  } else {
-    window.location.assign(
-      "http://aqueous-coast-83469.herokuapp.com//feedback"
-    );
-  }
+  window.location.assign("http://localhost:3000/feedback");
 };
 let timer = 10;
 
