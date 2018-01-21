@@ -9,87 +9,10 @@
  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
  <!--Import materialize.css-->
  <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-alpha.3/css/materialize.min.css"  media="screen,projection"/>
- <link rel="stylesheet" href="../public/stylesheets/feedback.css">
- <style>
- html{
-    padding: 50px;
-    border: 10px solid purple;
-}
-form {
-    position: fixed;
-    bottom: 0px;
-    left: 0px;
-    right: 0px;
-    width: 100%;
-    height: 150px;
-    z-index: 99;
-    background: #lightblue;
-    outline: none;
-    border-top: 10px solid blue;
-}
+ <link rel="stylesheet" href="/stylesheets/chat.css">
 
-#chat{
-   resize: none;
-   height: 100px;
-}
-
-#message, #leave{
-    position: relative;
-    right: 0px;
-    bottom: 0px;
-    top: 25px;
-    height: 100px;
-}
-
-/*speech bubble template from https://leaverou.github.io/bubbly/*/
-.speech-bubble-left {
-    position: relative;
-    background: #00aabb;
-    border-radius: .4em;
-}
-
-.speech-bubble-left:after {
-    content: '';
-    position: absolute;
-    left: 0;
-    top: 50%;
-    width: 0;
-    height: 0;
-    border: 20px solid transparent;
-    border-right-color: #00aabb;
-    border-left: 0;
-    border-bottom: 0;
-    margin-top: -10px;
-    margin-left: -20px;
-}
-
-.speech-bubble-right {
-    position: relative;
-    background: #00aabb;
-    border-radius: .4em;
-}
-
-.speech-bubble-right:after {
-    content: '';
-    position: absolute;
-    right: 0;
-    top: 50%;
-    width: 0;
-    height: 0;
-    border: 20px solid transparent;
-    border-left-color: #00aabb;
-    border-right: 0;
-    border-bottom: 0;
-    margin-top: -10px;
-    margin-right: -20px;
-}
-#message-container div{
-
-}
-
-</style>
-<!--Let browser know website is optimized for mobile-->
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+ <!--Let browser know website is optimized for mobile-->
+ <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 </head>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.4/socket.io.js"></script>
@@ -97,62 +20,101 @@ form {
     var socket = io();
 
     function sendMessage() {
+        // get username
         const user = document.getElementById('message-container').getAttribute("name");
+        // get message from text area
         var msg = document.getElementById('chat').value;
         if (msg) {
             socket.emit('msg', { message: msg, username: user });
         }
     }
-    socket.on('newmsg', function (data) {
-        document.getElementById('message-container').innerHTML += '<div class="speech-bubble-right"> <span class="username">' + data.username + "</span><p>" + data.message + '</p></div>';
+
+    socket.on('newmsg', function (data) {        
+        // if the message was sent by the current user, add the 'from-user' class
+        // else add the 'to-user' class
+        var classToAdd;
+        if(data.username === document.getElementById('message-container').getAttribute("name")){
+            classToAdd = "from-user";
+        } else{
+            classToAdd = "to-user";
+        }
+
+        // insert timestamp here
+        var timestamp = "12:00";
+
+        // add the new message to the container
+        msgContainer = document.getElementById('message-container');
+        msgContainer.innerHTML += '<div class="chat-messages ' + classToAdd 
+            + '"> <span class="username">' + data.username 
+            + "</span><p>" + data.message 
+            + '</p><p class="timestamp">' + timestamp + '</p></div>';
+
+
+
+        // scroll to the bottom when a new message is sent
+        var elem = document.getElementById('chat-wrapper');
+        elem.scrollTop = elem.scrollHeight;
+
     });
+
 </script>
 
 <body>
 
-    <h1> Chat </h1>
+   <header class="navbar-fixed">
+    <nav>
+      <div class="nav-wrapper cyan darken-4">
+        <div class="container">
+          <span href="#" class="brand-logo center">Logo</span>
+          <a href="#" data-target="mobile" class="sidenav-trigger">
+            <i class="material-icons">menu</i>
+        </a>
+    </div>
+</div>
+</nav>
+</header>
 
-    <!-- <div class="row"> -->
-        <!-- <div class="col s12 m5"> -->
-            <div class="card-panel teal">
-                <span class="white-text">I am a very simple card. I am good at containing small bits of information. I am convenient because I require
-                    little markup to use effectively. I am similar to what is called a panel in other frameworks.
-                </span>
-            </div>
-            <!-- </div> -->
-            <!-- </div> -->
-            <div name=<%=username %> id="message-container"></div>
-            <form>
-                <div class="row">
-                    <div class="col s1">    
-                        <button class="btn waves-effect waves-light" type="button" name="button" id="message"">
-                            quit
-                            <i class="material-icons center">close</i>
-                        </button>
-                    </div>
-                    <!-- <input type="textarea" name="chat" id="chat"> -->
-                    <div class="input-field col s10">
-                        <textarea maxlength="420" class="materialize-textarea" name="chat" id="chat"></textarea>
-                    </div>
+<h1> Chatroom </h1>
+<div id="chat-wrapper">
+    <div class="card-panel yellow darken-4">
+        <span class="white-text">     
+            Please be nice in the chat!
+        </span>
+    </div>
+    <!-- message container for messages -->
+    <div name=<%=username %> id="message-container"></div>
+</div>
+<!-- form for sending messages to chat -->
+<form>
+    <div class="row">
+        <div class="col l1 s3">    
+            <button class="btn waves-effect waves-light" type="button" name="button" id="leave"">
+                quit
+                <i class="material-icons center">close</i>
+            </button>
+        </div>
+        <div class="input-field col l10 s6">
+            <textarea placeholder="Type a message here..." maxlength="420" class="materialize-textarea" name="chat" id="chat"></textarea>
+        </div>
 
-                    <div class="col s1">
-                        <button class="btn waves-effect waves-light" type="button" name="button" id="message" onclick="sendMessage()">
-                            send
-                            <i class="material-icons center">send</i>
-                        </button>
-                    </div>
-                </div>
-            </form>
+        <div class="col l1 s3">
+            <button class="btn waves-effect waves-light" type="button" name="button" id="message" onclick="sendMessage()">
+                send
+                <i class="material-icons center">send</i>
+            </button>
+        </div>
+    </div>
+</form>
 
 
-            <!--Import jQuery before materialize.js-->
-            <script type="text/javascript " src="https://code.jquery.com/jquery-3.2.1.min.js "></script>
-            <script type="text/javascript " src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-alpha.3/js/materialize.min.js "></script>
-            <script>
-                $(document).ready(function () {
-                    $('.sidenav').sidenav();
-                    $('.scrollspy').scrollSpy();
-                });
-            </script>
-        </body>
-        </html>
+<!--Import jQuery before materialize.js-->
+<script type="text/javascript " src="https://code.jquery.com/jquery-3.2.1.min.js "></script>
+<script type="text/javascript " src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-alpha.3/js/materialize.min.js "></script>
+<script>
+    $(document).ready(function () {
+        $('.sidenav').sidenav();
+        $('.scrollspy').scrollSpy();
+    });
+</script>
+</body>
+</html>
