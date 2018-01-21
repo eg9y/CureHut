@@ -51,7 +51,7 @@ const startTheTimer = () => {
         newMin = minTime.toString().length == 1 ? "0" + minTime : minTime,
         newHour = hourTime.toString().length == 1 ? "0" + hourTime : hourTime;
 
-      document.getElementById("timer").innerHTML =
+      document.getElementByClass("timer").innerHTML =
         newHour + ":" + newMin + ":" + newSec;
 
       secTime++;
