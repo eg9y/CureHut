@@ -13,6 +13,13 @@
     media="screen,projection" />
   <link rel="stylesheet" href="/stylesheets/feedback.css">
 
+  <!-- rediret to /portal if there were no other people in the chat -->
+  <% if(userList.length <= 1){ %>
+
+  <meta http-equiv="refresh" content="0; url=/portal" />
+  <% } %>
+
+
   <style>
     .col {
       text-align: center;
