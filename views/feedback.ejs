@@ -16,21 +16,21 @@
   <!-- rediret to /portal if there were no other people in the chat -->
   <% if(userList.length <= 1){ %>
 
-  <meta http-equiv="refresh" content="0; url=/portal" />
-  <% } %>
+    <meta http-equiv="refresh" content="0; url=/portal" />
+    <% } %>
 
 
-  <style>
-    .col {
-      text-align: center;
-    }
+      <style>
+        .col {
+          text-align: center;
+        }
 
-    #report-column {
-      border-left: 2px solid black;
-    }
-  </style>
-  <!--Let browser know website is optimized for mobile-->
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        #report-column {
+          border-left: 2px solid black;
+        }
+      </style>
+      <!--Let browser know website is optimized for mobile-->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 </head>
 
 <body>
@@ -92,7 +92,7 @@
         <% for(let x = 0; x < userList.length; x++) { %>
           <% if(user.username !== userList[x]) { %>
             <h3>username:
-              <%userList[x]%>
+              <%=userList[x]%>
             </h3>
             <input type="hidden" name="username" value=<%=userList[x]%>>
             <div class="col m4 s12">
